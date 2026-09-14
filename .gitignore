@@ -1,0 +1,29 @@
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Cocotb / Verilator
+sim_build/
+obj_dir/
+results.xml
+*.vcd
+
+# Vivado generated project/build files
+**/vivado_project/
+*.jou
+*.log
+*.str
+
+# FPGA build outputs
+fpga/ice40/*.asc
+fpga/ice40/*.bin
+fpga/ice40/*.json
+
+# OS/editor files
+.DS_Store
+.vscode/
+
+# Private project study notes
+study.mdsynthesis/*_netlist.v

@@ -1,0 +1,2973 @@
+
+-- Running command `read_verilog -sv rtl/uart_tx.sv rtl/multiplier.sv synthesis/dot_product_yosys.sv synthesis/matrix_layer_yosys.sv synthesis/fpga_top_yosys.sv; hierarchy -top fpga_top_yosys; synth_ice40 -top fpga_top_yosys -json fpga/ice40/fpga_top.json' --
+
+1. Executing Verilog-2005 frontend: rtl/uart_tx.sv
+Parsing SystemVerilog input from `rtl/uart_tx.sv' to AST representation.
+Generating RTLIL representation for module `\uart_tx'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/multiplier.sv
+Parsing SystemVerilog input from `rtl/multiplier.sv' to AST representation.
+Generating RTLIL representation for module `\multiplier'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: synthesis/dot_product_yosys.sv
+Parsing SystemVerilog input from `synthesis/dot_product_yosys.sv' to AST representation.
+Generating RTLIL representation for module `\dot_product'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: synthesis/matrix_layer_yosys.sv
+Parsing SystemVerilog input from `synthesis/matrix_layer_yosys.sv' to AST representation.
+Generating RTLIL representation for module `\matrix_layer_yosys'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: synthesis/fpga_top_yosys.sv
+Parsing SystemVerilog input from `synthesis/fpga_top_yosys.sv' to AST representation.
+Generating RTLIL representation for module `\fpga_top_yosys'.
+Successfully finished Verilog frontend.
+
+6. Executing HIERARCHY pass (managing design hierarchy).
+
+6.1. Analyzing design hierarchy..
+Top module:  \fpga_top_yosys
+Used module:     \uart_tx
+Used module:     \matrix_layer_yosys
+Used module:         \dot_product
+Used module:             \multiplier
+Parameter \N = 8
+
+6.2. Executing AST frontend in derive mode using pre-parsed AST for module `\multiplier'.
+Parameter \N = 8
+Generating RTLIL representation for module `$paramod\multiplier\N=s32'00000000000000000000000000001000'.
+Reprocessing module dot_product because instantiated module $paramod\multiplier\N=s32'00000000000000000000000000001000 has become available.
+Generating RTLIL representation for module `\dot_product'.
+Parameter \N = 8
+Parameter \NUM_ELEMENTS = 2
+
+6.3. Executing AST frontend in derive mode using pre-parsed AST for module `\dot_product'.
+Parameter \N = 8
+Parameter \NUM_ELEMENTS = 2
+Generating RTLIL representation for module `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product'.
+Parameter \DATA_WIDTH = 8
+Parameter \CLKS_PER_BIT = 104
+
+6.4. Executing AST frontend in derive mode using pre-parsed AST for module `\uart_tx'.
+Parameter \DATA_WIDTH = 8
+Parameter \CLKS_PER_BIT = 104
+Generating RTLIL representation for module `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx'.
+Parameter \N = 8
+Parameter \INPUT_ROWS = 2
+Parameter \INPUT_COLS = 2
+Parameter \WEIGHT_COLS = 3
+
+6.5. Executing AST frontend in derive mode using pre-parsed AST for module `\matrix_layer_yosys'.
+Parameter \N = 8
+Parameter \INPUT_ROWS = 2
+Parameter \INPUT_COLS = 2
+Parameter \WEIGHT_COLS = 3
+Generating RTLIL representation for module `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys'.
+
+6.6. Analyzing design hierarchy..
+Top module:  \fpga_top_yosys
+Used module:     $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx
+Used module:     $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys
+Used module:         \dot_product
+Used module:             \multiplier
+Parameter \N = 8
+Found cached RTLIL representation for module `$paramod\multiplier\N=s32'00000000000000000000000000001000'.
+Parameter \N = 8
+Parameter \NUM_ELEMENTS = 2
+Found cached RTLIL representation for module `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product'.
+
+6.7. Analyzing design hierarchy..
+Top module:  \fpga_top_yosys
+Used module:     $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx
+Used module:     $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys
+Used module:         $paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product
+Used module:             \multiplier
+Parameter \N = 8
+Found cached RTLIL representation for module `$paramod\multiplier\N=s32'00000000000000000000000000001000'.
+
+6.8. Analyzing design hierarchy..
+Top module:  \fpga_top_yosys
+Used module:     $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx
+Used module:     $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys
+Used module:         $paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product
+Used module:             $paramod\multiplier\N=s32'00000000000000000000000000001000
+
+6.9. Analyzing design hierarchy..
+Top module:  \fpga_top_yosys
+Used module:     $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx
+Used module:     $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys
+Used module:         $paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product
+Used module:             $paramod\multiplier\N=s32'00000000000000000000000000001000
+Removing unused module `\dot_product'.
+Removing unused module `\matrix_layer_yosys'.
+Removing unused module `\multiplier'.
+Removing unused module `\uart_tx'.
+Removed 4 unused modules.
+
+7. Executing SYNTH_ICE40 pass.
+
+7.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/ice40/cells_sim.v
+Parsing Verilog input from `/usr/bin/../share/yosys/ice40/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\SB_IO'.
+Generating RTLIL representation for module `\SB_GB_IO'.
+Generating RTLIL representation for module `\SB_GB'.
+Generating RTLIL representation for module `\SB_LUT4'.
+Generating RTLIL representation for module `\SB_CARRY'.
+Generating RTLIL representation for module `\SB_DFF'.
+Generating RTLIL representation for module `\SB_DFFE'.
+Generating RTLIL representation for module `\SB_DFFSR'.
+Generating RTLIL representation for module `\SB_DFFR'.
+Generating RTLIL representation for module `\SB_DFFSS'.
+Generating RTLIL representation for module `\SB_DFFS'.
+Generating RTLIL representation for module `\SB_DFFESR'.
+Generating RTLIL representation for module `\SB_DFFER'.
+Generating RTLIL representation for module `\SB_DFFESS'.
+Generating RTLIL representation for module `\SB_DFFES'.
+Generating RTLIL representation for module `\SB_DFFN'.
+Generating RTLIL representation for module `\SB_DFFNE'.
+Generating RTLIL representation for module `\SB_DFFNSR'.
+Generating RTLIL representation for module `\SB_DFFNR'.
+Generating RTLIL representation for module `\SB_DFFNSS'.
+Generating RTLIL representation for module `\SB_DFFNS'.
+Generating RTLIL representation for module `\SB_DFFNESR'.
+Generating RTLIL representation for module `\SB_DFFNER'.
+Generating RTLIL representation for module `\SB_DFFNESS'.
+Generating RTLIL representation for module `\SB_DFFNES'.
+Generating RTLIL representation for module `\SB_RAM40_4K'.
+Generating RTLIL representation for module `\SB_RAM40_4KNR'.
+Generating RTLIL representation for module `\SB_RAM40_4KNW'.
+Generating RTLIL representation for module `\SB_RAM40_4KNRNW'.
+Generating RTLIL representation for module `\ICESTORM_LC'.
+Generating RTLIL representation for module `\SB_PLL40_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2F_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_2F_PAD'.
+Generating RTLIL representation for module `\SB_WARMBOOT'.
+Generating RTLIL representation for module `\SB_SPRAM256KA'.
+Generating RTLIL representation for module `\SB_HFOSC'.
+Generating RTLIL representation for module `\SB_LFOSC'.
+Generating RTLIL representation for module `\SB_RGBA_DRV'.
+Generating RTLIL representation for module `\SB_LED_DRV_CUR'.
+Generating RTLIL representation for module `\SB_RGB_DRV'.
+Generating RTLIL representation for module `\SB_I2C'.
+Generating RTLIL representation for module `\SB_SPI'.
+Generating RTLIL representation for module `\SB_LEDDA_IP'.
+Generating RTLIL representation for module `\SB_FILTER_50NS'.
+Generating RTLIL representation for module `\SB_IO_I3C'.
+Generating RTLIL representation for module `\SB_IO_OD'.
+Generating RTLIL representation for module `\SB_MAC16'.
+Generating RTLIL representation for module `\ICESTORM_RAM'.
+Successfully finished Verilog frontend.
+
+7.2. Executing HIERARCHY pass (managing design hierarchy).
+
+7.2.1. Analyzing design hierarchy..
+Top module:  \fpga_top_yosys
+Used module:     $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx
+Used module:     $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys
+Used module:         $paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product
+Used module:             $paramod\multiplier\N=s32'00000000000000000000000000001000
+
+7.2.2. Analyzing design hierarchy..
+Top module:  \fpga_top_yosys
+Used module:     $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx
+Used module:     $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys
+Used module:         $paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product
+Used module:             $paramod\multiplier\N=s32'00000000000000000000000000001000
+Removed 0 unused modules.
+
+7.3. Executing PROC pass (convert processes to netlists).
+
+7.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+7.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1414$527 in module SB_DFFNES.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1353$520 in module SB_DFFNESS.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1273$516 in module SB_DFFNER.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1212$509 in module SB_DFFNESR.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1138$506 in module SB_DFFNS.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1088$503 in module SB_DFFNSS.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1017$500 in module SB_DFFNR.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:967$497 in module SB_DFFNSR.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:803$489 in module SB_DFFES.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:742$482 in module SB_DFFESS.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:662$478 in module SB_DFFER.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:601$471 in module SB_DFFESR.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:527$468 in module SB_DFFS.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:477$465 in module SB_DFFSS.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:406$462 in module SB_DFFR.
+Marked 1 switch rules as full_case in process $proc$/usr/bin/../share/yosys/ice40/cells_sim.v:356$459 in module SB_DFFSR.
+Marked 4 switch rules as full_case in process $proc$synthesis/fpga_top_yosys.sv:0$136 in module fpga_top_yosys.
+Marked 1 switch rules as full_case in process $proc$synthesis/fpga_top_yosys.sv:111$129 in module fpga_top_yosys.
+Marked 1 switch rules as full_case in process $proc$synthesis/fpga_top_yosys.sv:0$128 in module fpga_top_yosys.
+Marked 3 switch rules as full_case in process $proc$synthesis/dot_product_yosys.sv:0$172 in module $paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.
+Marked 2 switch rules as full_case in process $proc$synthesis/dot_product_yosys.sv:37$164 in module $paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.
+Marked 6 switch rules as full_case in process $proc$rtl/uart_tx.sv:0$188 in module $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.
+Marked 3 switch rules as full_case in process $proc$rtl/uart_tx.sv:29$182 in module $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.
+Marked 5 switch rules as full_case in process $proc$synthesis/matrix_layer_yosys.sv:0$258 in module $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.
+Marked 5 switch rules as full_case in process $proc$synthesis/matrix_layer_yosys.sv:57$201 in module $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.
+Removed a total of 0 dead cases.
+
+7.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 13 redundant assignments.
+Promoted 48 assignments to connections.
+
+7.3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\SB_DFFNES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$530'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$526'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$519'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$515'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$508'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$505'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$502'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$499'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$496'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFN.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$494'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$492'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$488'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$481'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$477'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$470'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$467'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$464'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$461'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$458'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFF.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$456'.
+  Set init value: \Q = 1'0
+
+7.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \S in `\SB_DFFNES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1414$527'.
+Found async reset \R in `\SB_DFFNER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1273$516'.
+Found async reset \S in `\SB_DFFNS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1138$506'.
+Found async reset \R in `\SB_DFFNR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1017$500'.
+Found async reset \S in `\SB_DFFES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:803$489'.
+Found async reset \R in `\SB_DFFER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:662$478'.
+Found async reset \S in `\SB_DFFS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:527$468'.
+Found async reset \R in `\SB_DFFR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:406$462'.
+
+7.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~54 debug messages>
+
+7.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\SB_DFFNES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$530'.
+Creating decoders for process `\SB_DFFNES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1414$527'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$526'.
+Creating decoders for process `\SB_DFFNESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1353$520'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$519'.
+Creating decoders for process `\SB_DFFNER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1273$516'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$515'.
+Creating decoders for process `\SB_DFFNESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1212$509'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$508'.
+Creating decoders for process `\SB_DFFNS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1138$506'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$505'.
+Creating decoders for process `\SB_DFFNSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1088$503'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$502'.
+Creating decoders for process `\SB_DFFNR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1017$500'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$499'.
+Creating decoders for process `\SB_DFFNSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:967$497'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$496'.
+Creating decoders for process `\SB_DFFNE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:922$495'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFN.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$494'.
+Creating decoders for process `\SB_DFFN.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:882$493'.
+Creating decoders for process `\SB_DFFES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$492'.
+Creating decoders for process `\SB_DFFES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:803$489'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$488'.
+Creating decoders for process `\SB_DFFESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:742$482'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$481'.
+Creating decoders for process `\SB_DFFER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:662$478'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$477'.
+Creating decoders for process `\SB_DFFESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:601$471'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$470'.
+Creating decoders for process `\SB_DFFS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:527$468'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$467'.
+Creating decoders for process `\SB_DFFSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:477$465'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$464'.
+Creating decoders for process `\SB_DFFR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:406$462'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$461'.
+Creating decoders for process `\SB_DFFSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:356$459'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$458'.
+Creating decoders for process `\SB_DFFE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:311$457'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFF.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$456'.
+Creating decoders for process `\SB_DFF.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:271$455'.
+Creating decoders for process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$136'.
+     1/7: $4\next_state[2:0]
+     2/7: $3\next_state[2:0]
+     3/7: $2\next_state[2:0]
+     4/7: $1\next_state[2:0]
+     5/7: $1\uart_start[0:0]
+     6/7: $1\done[0:0]
+     7/7: $1\start[0:0]
+Creating decoders for process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:111$129'.
+     1/2: $0\state[2:0]
+     2/2: $0\result_index[2:0]
+Creating decoders for process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$128'.
+     1/1: $1\uart_data[7:0]
+Creating decoders for process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:0$172'.
+     1/3: $3\next_state[1:0]
+     2/3: $2\next_state[1:0]
+     3/3: $1\next_state[1:0]
+Creating decoders for process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:37$164'.
+     1/6: $0\state[1:0]
+     2/6: $0\count[0:0]
+     3/6: $0\acc[16:0]
+     4/6: $0\weight_reg[15:0]
+     5/6: $0\input_reg[15:0]
+     6/6: $0\result[16:0]
+Creating decoders for process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:0$188'.
+     1/7: $6\next_state[2:0]
+     2/7: $5\next_state[2:0]
+     3/7: $4\next_state[2:0]
+     4/7: $3\next_state[2:0]
+     5/7: $2\next_state[2:0]
+     6/7: $1\next_state[2:0]
+     7/7: $1\tx[0:0]
+Creating decoders for process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:29$182'.
+     1/4: $0\counter[6:0]
+     2/4: $0\state[2:0]
+     3/4: $0\data_reg[7:0]
+     4/4: $0\bit_index[2:0]
+Creating decoders for process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+     1/7: $5\next_state[2:0]
+     2/7: $4\next_state[2:0]
+     3/7: $3\next_state[2:0]
+     4/7: $2\next_state[2:0]
+     5/7: $1\next_state[2:0]
+     6/7: $1\dot_start[0:0]
+     7/7: $1\done[0:0]
+Creating decoders for process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+     1/20: $2$lookahead\output_data$200[107:0]$226
+     2/20: $2$bitselwrite$data$synthesis/matrix_layer_yosys.sv:77$195[107:0]$221
+     3/20: $2$bitselwrite$mask$synthesis/matrix_layer_yosys.sv:77$194[107:0]$220
+     4/20: $2$bitselwrite$sel$synthesis/matrix_layer_yosys.sv:77$196[31:0]$222
+     5/20: $2$bitselwrite$sel$synthesis/matrix_layer_yosys.sv:80$199[31:0]$225
+     6/20: $2$bitselwrite$data$synthesis/matrix_layer_yosys.sv:80$198[107:0]$224
+     7/20: $2$bitselwrite$mask$synthesis/matrix_layer_yosys.sv:80$197[107:0]$223
+     8/20: $1$lookahead\output_data$200[107:0]$218
+     9/20: $1$bitselwrite$sel$synthesis/matrix_layer_yosys.sv:80$199[31:0]$217
+    10/20: $1$bitselwrite$data$synthesis/matrix_layer_yosys.sv:80$198[107:0]$216
+    11/20: $1$bitselwrite$mask$synthesis/matrix_layer_yosys.sv:80$197[107:0]$215
+    12/20: $1$bitselwrite$sel$synthesis/matrix_layer_yosys.sv:77$196[31:0]$214
+    13/20: $1$bitselwrite$data$synthesis/matrix_layer_yosys.sv:77$195[107:0]$213
+    14/20: $1$bitselwrite$mask$synthesis/matrix_layer_yosys.sv:77$194[107:0]$212
+    15/20: $0\state[2:0]
+    16/20: $0\col_index[1:0]
+    17/20: $0\row_index[0:0]
+    18/20: $0\bias_reg[50:0]
+    19/20: $0\input_data_reg[31:0]
+    20/20: $0\weight_reg[47:0]
+
+7.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\fpga_top_yosys.\start' from process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$136'.
+No latch inferred for signal `\fpga_top_yosys.\next_state' from process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$136'.
+No latch inferred for signal `\fpga_top_yosys.\done' from process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$136'.
+No latch inferred for signal `\fpga_top_yosys.\uart_start' from process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$136'.
+No latch inferred for signal `\fpga_top_yosys.\uart_data' from process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$128'.
+No latch inferred for signal `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.\next_state' from process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:0$172'.
+No latch inferred for signal `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.\tx' from process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:0$188'.
+No latch inferred for signal `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.\next_state' from process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:0$188'.
+No latch inferred for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\busy' from process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+No latch inferred for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\next_state' from process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+No latch inferred for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\done' from process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+No latch inferred for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\dot_input' from process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+No latch inferred for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\dot_weight' from process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+No latch inferred for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\bias_result' from process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+No latch inferred for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\dot_start' from process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+No latch inferred for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$fordecl_block$33.k' from process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+
+7.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\SB_DFFNES.\Q' using process `\SB_DFFNES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1414$527'.
+  created $adff cell `$procdff$1060' with negative edge clock and positive level reset.
+Creating register for signal `\SB_DFFNESS.\Q' using process `\SB_DFFNESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1353$520'.
+  created $dff cell `$procdff$1061' with negative edge clock.
+Creating register for signal `\SB_DFFNER.\Q' using process `\SB_DFFNER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1273$516'.
+  created $adff cell `$procdff$1062' with negative edge clock and positive level reset.
+Creating register for signal `\SB_DFFNESR.\Q' using process `\SB_DFFNESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1212$509'.
+  created $dff cell `$procdff$1063' with negative edge clock.
+Creating register for signal `\SB_DFFNS.\Q' using process `\SB_DFFNS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1138$506'.
+  created $adff cell `$procdff$1064' with negative edge clock and positive level reset.
+Creating register for signal `\SB_DFFNSS.\Q' using process `\SB_DFFNSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1088$503'.
+  created $dff cell `$procdff$1065' with negative edge clock.
+Creating register for signal `\SB_DFFNR.\Q' using process `\SB_DFFNR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1017$500'.
+  created $adff cell `$procdff$1066' with negative edge clock and positive level reset.
+Creating register for signal `\SB_DFFNSR.\Q' using process `\SB_DFFNSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:967$497'.
+  created $dff cell `$procdff$1067' with negative edge clock.
+Creating register for signal `\SB_DFFNE.\Q' using process `\SB_DFFNE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:922$495'.
+  created $dff cell `$procdff$1068' with negative edge clock.
+Creating register for signal `\SB_DFFN.\Q' using process `\SB_DFFN.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:882$493'.
+  created $dff cell `$procdff$1069' with negative edge clock.
+Creating register for signal `\SB_DFFES.\Q' using process `\SB_DFFES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:803$489'.
+  created $adff cell `$procdff$1070' with positive edge clock and positive level reset.
+Creating register for signal `\SB_DFFESS.\Q' using process `\SB_DFFESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:742$482'.
+  created $dff cell `$procdff$1071' with positive edge clock.
+Creating register for signal `\SB_DFFER.\Q' using process `\SB_DFFER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:662$478'.
+  created $adff cell `$procdff$1072' with positive edge clock and positive level reset.
+Creating register for signal `\SB_DFFESR.\Q' using process `\SB_DFFESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:601$471'.
+  created $dff cell `$procdff$1073' with positive edge clock.
+Creating register for signal `\SB_DFFS.\Q' using process `\SB_DFFS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:527$468'.
+  created $adff cell `$procdff$1074' with positive edge clock and positive level reset.
+Creating register for signal `\SB_DFFSS.\Q' using process `\SB_DFFSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:477$465'.
+  created $dff cell `$procdff$1075' with positive edge clock.
+Creating register for signal `\SB_DFFR.\Q' using process `\SB_DFFR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:406$462'.
+  created $adff cell `$procdff$1076' with positive edge clock and positive level reset.
+Creating register for signal `\SB_DFFSR.\Q' using process `\SB_DFFSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:356$459'.
+  created $dff cell `$procdff$1077' with positive edge clock.
+Creating register for signal `\SB_DFFE.\Q' using process `\SB_DFFE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:311$457'.
+  created $dff cell `$procdff$1078' with positive edge clock.
+Creating register for signal `\SB_DFF.\Q' using process `\SB_DFF.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:271$455'.
+  created $dff cell `$procdff$1079' with positive edge clock.
+Creating register for signal `\fpga_top_yosys.\state' using process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:111$129'.
+  created $dff cell `$procdff$1080' with positive edge clock.
+Creating register for signal `\fpga_top_yosys.\result_index' using process `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:111$129'.
+  created $dff cell `$procdff$1081' with positive edge clock.
+Creating register for signal `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.\state' using process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:37$164'.
+  created $dff cell `$procdff$1082' with positive edge clock.
+Creating register for signal `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.\result' using process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:37$164'.
+  created $dff cell `$procdff$1083' with positive edge clock.
+Creating register for signal `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.\input_reg' using process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:37$164'.
+  created $dff cell `$procdff$1084' with positive edge clock.
+Creating register for signal `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.\weight_reg' using process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:37$164'.
+  created $dff cell `$procdff$1085' with positive edge clock.
+Creating register for signal `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.\acc' using process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:37$164'.
+  created $dff cell `$procdff$1086' with positive edge clock.
+Creating register for signal `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.\count' using process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:37$164'.
+  created $dff cell `$procdff$1087' with positive edge clock.
+Creating register for signal `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.\counter' using process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:29$182'.
+  created $dff cell `$procdff$1088' with positive edge clock.
+Creating register for signal `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.\bit_index' using process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:29$182'.
+  created $dff cell `$procdff$1089' with positive edge clock.
+Creating register for signal `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.\data_reg' using process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:29$182'.
+  created $dff cell `$procdff$1090' with positive edge clock.
+Creating register for signal `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.\state' using process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:29$182'.
+  created $dff cell `$procdff$1091' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\state' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1092' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\weight_reg' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1093' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\output_data' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1094' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\input_data_reg' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1095' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\bias_reg' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1096' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\row_index' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1097' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.\col_index' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1098' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$bitselwrite$mask$synthesis/matrix_layer_yosys.sv:77$194' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1099' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$bitselwrite$data$synthesis/matrix_layer_yosys.sv:77$195' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1100' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$bitselwrite$sel$synthesis/matrix_layer_yosys.sv:77$196' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1101' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$bitselwrite$mask$synthesis/matrix_layer_yosys.sv:80$197' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1102' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$bitselwrite$data$synthesis/matrix_layer_yosys.sv:80$198' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1103' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$bitselwrite$sel$synthesis/matrix_layer_yosys.sv:80$199' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1104' with positive edge clock.
+Creating register for signal `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$lookahead\output_data$200' using process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+  created $dff cell `$procdff$1105' with positive edge clock.
+
+7.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+7.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `SB_DFFNES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$530'.
+Found and cleaned up 1 empty switch in `\SB_DFFNES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1414$527'.
+Removing empty process `SB_DFFNES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1414$527'.
+Removing empty process `SB_DFFNESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$526'.
+Found and cleaned up 2 empty switches in `\SB_DFFNESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1353$520'.
+Removing empty process `SB_DFFNESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1353$520'.
+Removing empty process `SB_DFFNER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$519'.
+Found and cleaned up 1 empty switch in `\SB_DFFNER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1273$516'.
+Removing empty process `SB_DFFNER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1273$516'.
+Removing empty process `SB_DFFNESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$515'.
+Found and cleaned up 2 empty switches in `\SB_DFFNESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1212$509'.
+Removing empty process `SB_DFFNESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1212$509'.
+Removing empty process `SB_DFFNS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$508'.
+Removing empty process `SB_DFFNS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1138$506'.
+Removing empty process `SB_DFFNSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$505'.
+Found and cleaned up 1 empty switch in `\SB_DFFNSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1088$503'.
+Removing empty process `SB_DFFNSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1088$503'.
+Removing empty process `SB_DFFNR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$502'.
+Removing empty process `SB_DFFNR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:1017$500'.
+Removing empty process `SB_DFFNSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$499'.
+Found and cleaned up 1 empty switch in `\SB_DFFNSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:967$497'.
+Removing empty process `SB_DFFNSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:967$497'.
+Removing empty process `SB_DFFNE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$496'.
+Found and cleaned up 1 empty switch in `\SB_DFFNE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:922$495'.
+Removing empty process `SB_DFFNE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:922$495'.
+Removing empty process `SB_DFFN.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$494'.
+Removing empty process `SB_DFFN.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:882$493'.
+Removing empty process `SB_DFFES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$492'.
+Found and cleaned up 1 empty switch in `\SB_DFFES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:803$489'.
+Removing empty process `SB_DFFES.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:803$489'.
+Removing empty process `SB_DFFESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$488'.
+Found and cleaned up 2 empty switches in `\SB_DFFESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:742$482'.
+Removing empty process `SB_DFFESS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:742$482'.
+Removing empty process `SB_DFFER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$481'.
+Found and cleaned up 1 empty switch in `\SB_DFFER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:662$478'.
+Removing empty process `SB_DFFER.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:662$478'.
+Removing empty process `SB_DFFESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$477'.
+Found and cleaned up 2 empty switches in `\SB_DFFESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:601$471'.
+Removing empty process `SB_DFFESR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:601$471'.
+Removing empty process `SB_DFFS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$470'.
+Removing empty process `SB_DFFS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:527$468'.
+Removing empty process `SB_DFFSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$467'.
+Found and cleaned up 1 empty switch in `\SB_DFFSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:477$465'.
+Removing empty process `SB_DFFSS.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:477$465'.
+Removing empty process `SB_DFFR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$464'.
+Removing empty process `SB_DFFR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:406$462'.
+Removing empty process `SB_DFFSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$461'.
+Found and cleaned up 1 empty switch in `\SB_DFFSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:356$459'.
+Removing empty process `SB_DFFSR.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:356$459'.
+Removing empty process `SB_DFFE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$458'.
+Found and cleaned up 1 empty switch in `\SB_DFFE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:311$457'.
+Removing empty process `SB_DFFE.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:311$457'.
+Removing empty process `SB_DFF.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:0$456'.
+Removing empty process `SB_DFF.$proc$/usr/bin/../share/yosys/ice40/cells_sim.v:271$455'.
+Found and cleaned up 4 empty switches in `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$136'.
+Removing empty process `fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$136'.
+Found and cleaned up 2 empty switches in `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:111$129'.
+Removing empty process `fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:111$129'.
+Found and cleaned up 1 empty switch in `\fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$128'.
+Removing empty process `fpga_top_yosys.$proc$synthesis/fpga_top_yosys.sv:0$128'.
+Found and cleaned up 3 empty switches in `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:0$172'.
+Removing empty process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:0$172'.
+Found and cleaned up 4 empty switches in `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:37$164'.
+Removing empty process `$paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.$proc$synthesis/dot_product_yosys.sv:37$164'.
+Found and cleaned up 6 empty switches in `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:0$188'.
+Removing empty process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:0$188'.
+Found and cleaned up 5 empty switches in `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:29$182'.
+Removing empty process `$paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.$proc$rtl/uart_tx.sv:29$182'.
+Found and cleaned up 5 empty switches in `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+Removing empty process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:0$258'.
+Found and cleaned up 6 empty switches in `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+Removing empty process `$paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.$proc$synthesis/matrix_layer_yosys.sv:57$201'.
+Cleaned up 54 empty switches.
+
+7.3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~4 debug messages>
+Optimizing module $paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.
+<suppressed ~5 debug messages>
+Optimizing module $paramod\multiplier\N=s32'00000000000000000000000000001000.
+Optimizing module $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.
+<suppressed ~4 debug messages>
+Optimizing module $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.
+<suppressed ~7 debug messages>
+
+7.4. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$0ac3b4c55b076dda1f3147ea0b0e2bb7117a0807\dot_product.
+Deleting now unused module $paramod\multiplier\N=s32'00000000000000000000000000001000.
+Deleting now unused module $paramod$bfee542ef062ac8481aaf8176c0ec4962701b047\uart_tx.
+Deleting now unused module $paramod$69670026575ca558a2798fe04252e7afba6458df\matrix_layer_yosys.
+<suppressed ~4 debug messages>
+
+7.5. Executing TRIBUF pass.
+
+7.6. Executing DEMINOUT pass (demote inout ports to input or output).
+
+7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~37 debug messages>
+
+7.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 26 unused cells and 240 unused wires.
+<suppressed ~44 debug messages>
+
+7.9. Executing CHECK pass (checking for obvious problems).
+Checking module fpga_top_yosys...
+Found and reported 0 problems.
+
+7.10. Executing OPT pass (performing simple optimizations).
+
+7.10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~129 debug messages>
+Removed a total of 43 cells.
+
+7.10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fpga_top_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\accelerator.$procmux$918.
+    dead port 2/2 on $mux $flatten\accelerator.$procmux$920.
+    dead port 2/2 on $mux $flatten\accelerator.$procmux$927.
+    dead port 2/2 on $mux $flatten\accelerator.$procmux$935.
+    dead port 2/2 on $mux $flatten\accelerator.$procmux$945.
+    dead port 2/2 on $mux $flatten\accelerator.$procmux$967.
+    dead port 2/2 on $mux $flatten\accelerator.\dut.$procmux$781.
+    dead port 2/2 on $mux $flatten\accelerator.\dut.$procmux$789.
+    dead port 2/2 on $mux $flatten\uart.$procmux$832.
+    dead port 2/2 on $mux $flatten\uart.$procmux$840.
+    dead port 2/2 on $mux $flatten\uart.$procmux$842.
+    dead port 2/2 on $mux $flatten\uart.$procmux$849.
+    dead port 2/2 on $mux $flatten\uart.$procmux$857.
+    dead port 2/2 on $mux $flatten\uart.$procmux$866.
+    dead port 2/2 on $mux $procmux$717.
+    dead port 2/2 on $mux $procmux$719.
+    dead port 2/2 on $mux $procmux$726.
+    dead port 2/2 on $mux $procmux$735.
+Removed 18 multiplexer ports.
+<suppressed ~28 debug messages>
+
+7.10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fpga_top_yosys.
+Performed a total of 0 changes.
+
+7.10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.10.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 0 unused cells and 61 unused wires.
+<suppressed ~1 debug messages>
+
+7.10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.10.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.10.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fpga_top_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~28 debug messages>
+
+7.10.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fpga_top_yosys.
+Performed a total of 0 changes.
+
+7.10.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.10.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.10.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.10.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.10.16. Finished OPT passes. (There is nothing left to do.)
+
+7.11. Executing FSM pass (extract and optimize FSM).
+
+7.11.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking fpga_top_yosys.accelerator.bias_reg as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Found FSM state register fpga_top_yosys.accelerator.dut.state.
+Not marking fpga_top_yosys.accelerator.input_data_reg as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking fpga_top_yosys.accelerator.state as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking fpga_top_yosys.accelerator.weight_reg as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Found FSM state register fpga_top_yosys.state.
+Found FSM state register fpga_top_yosys.uart.state.
+
+7.11.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\accelerator.dut.state' from module `\fpga_top_yosys'.
+  found $dff cell for state register: $flatten\accelerator.\dut.$procdff$1082
+  root of input selection tree: $flatten\accelerator.\dut.$0\state[1:0]
+  found reset state: 2'00 (guessed from mux tree)
+  found ctrl input: \rst
+  found ctrl input: $flatten\accelerator.\dut.$eq$synthesis/dot_product_yosys.sv:55$167_Y
+  found ctrl input: $flatten\accelerator.\dut.$eq$synthesis/dot_product_yosys.sv:48$165_Y
+  found state code: 2'00
+  found ctrl input: \accelerator.dut.count
+  found state code: 2'01
+  found state code: 2'10
+  found ctrl input: \accelerator.dut.start
+  found ctrl output: \accelerator.dot_done
+  found ctrl output: $flatten\accelerator.\dut.$eq$synthesis/dot_product_yosys.sv:48$165_Y
+  found ctrl output: $flatten\accelerator.\dut.$eq$synthesis/dot_product_yosys.sv:55$167_Y
+  ctrl inputs: { \accelerator.dut.count \accelerator.dut.start \rst }
+  ctrl outputs: { \accelerator.dot_done $flatten\accelerator.\dut.$eq$synthesis/dot_product_yosys.sv:55$167_Y $flatten\accelerator.\dut.$eq$synthesis/dot_product_yosys.sv:48$165_Y $flatten\accelerator.\dut.$0\state[1:0] }
+  transition:       2'00 3'-00 ->       2'00 5'00100
+  transition:       2'00 3'-10 ->       2'01 5'00101
+  transition:       2'00 3'--1 ->       2'00 5'00100
+  transition:       2'10 3'--0 ->       2'00 5'10000
+  transition:       2'10 3'--1 ->       2'00 5'10000
+  transition:       2'01 3'0-0 ->       2'01 5'01001
+  transition:       2'01 3'1-0 ->       2'10 5'01010
+  transition:       2'01 3'--1 ->       2'00 5'01000
+Extracting FSM `\state' from module `\fpga_top_yosys'.
+  found $dff cell for state register: $procdff$1080
+  root of input selection tree: $0\state[2:0]
+  found reset state: 3'000 (guessed from mux tree)
+  found ctrl input: \rst
+  found ctrl input: $procmux$739_CMP
+  found ctrl input: $eq$synthesis/fpga_top_yosys.sv:119$130_Y
+  found ctrl input: $procmux$741_CMP
+  found ctrl input: $procmux$736_CMP
+  found ctrl input: $procmux$743_CMP
+  found ctrl input: $procmux$744_CMP
+  found state code: 3'000
+  found state code: 3'101
+  found ctrl input: $flatten\uart.$eq$rtl/uart_tx.sv:27$180_Y
+  found ctrl input: $eq$synthesis/fpga_top_yosys.sv:156$140_Y
+  found state code: 3'011
+  found state code: 3'100
+  found ctrl input: $logic_and$synthesis/fpga_top_yosys.sv:145$138_Y
+  found state code: 3'010
+  found state code: 3'001
+  found ctrl output: $eq$synthesis/fpga_top_yosys.sv:119$130_Y
+  found ctrl output: $procmux$736_CMP
+  found ctrl output: $procmux$739_CMP
+  found ctrl output: $procmux$741_CMP
+  found ctrl output: $procmux$743_CMP
+  found ctrl output: $procmux$744_CMP
+  ctrl inputs: { $flatten\uart.$eq$rtl/uart_tx.sv:27$180_Y $eq$synthesis/fpga_top_yosys.sv:156$140_Y $logic_and$synthesis/fpga_top_yosys.sv:145$138_Y \rst }
+  ctrl outputs: { $procmux$744_CMP $procmux$743_CMP $procmux$741_CMP $procmux$739_CMP $procmux$736_CMP $eq$synthesis/fpga_top_yosys.sv:119$130_Y $0\state[2:0] }
+  transition:      3'000 4'---0 ->      3'001 9'100000001
+  transition:      3'000 4'---1 ->      3'000 9'100000000
+  transition:      3'100 4'0--0 ->      3'100 9'000001100
+  transition:      3'100 4'10-0 ->      3'011 9'000001011
+  transition:      3'100 4'11-0 ->      3'101 9'000001101
+  transition:      3'100 4'---1 ->      3'000 9'000001000
+  transition:      3'010 4'--00 ->      3'010 9'000010010
+  transition:      3'010 4'--10 ->      3'011 9'000010011
+  transition:      3'010 4'---1 ->      3'000 9'000010000
+  transition:      3'001 4'---0 ->      3'010 9'010000010
+  transition:      3'001 4'---1 ->      3'000 9'010000000
+  transition:      3'101 4'---0 ->      3'101 9'000100101
+  transition:      3'101 4'---1 ->      3'000 9'000100000
+  transition:      3'011 4'---0 ->      3'100 9'001000100
+  transition:      3'011 4'---1 ->      3'000 9'001000000
+Extracting FSM `\uart.state' from module `\fpga_top_yosys'.
+  found $dff cell for state register: $flatten\uart.$procdff$1091
+  root of input selection tree: $flatten\uart.$0\state[2:0]
+  found reset state: 3'000 (guessed from mux tree)
+  found ctrl input: \rst
+  found ctrl input: $flatten\uart.$procmux$833_CMP
+  found ctrl input: $flatten\uart.$eq$rtl/uart_tx.sv:47$185_Y
+  found ctrl input: $flatten\uart.$procmux$858_CMP
+  found ctrl input: $flatten\uart.$eq$rtl/uart_tx.sv:27$180_Y
+  found state code: 3'000
+  found ctrl input: $flatten\uart.$eq$rtl/uart_tx.sv:45$184_Y
+  found state code: 3'011
+  found state code: 3'010
+  found ctrl input: $flatten\uart.$eq$rtl/uart_tx.sv:83$192_Y
+  found state code: 3'001
+  found ctrl input: \uart.start
+  found ctrl output: $flatten\uart.$procmux$858_CMP
+  found ctrl output: $flatten\uart.$procmux$833_CMP
+  found ctrl output: $flatten\uart.$eq$rtl/uart_tx.sv:47$185_Y
+  found ctrl output: $flatten\uart.$eq$rtl/uart_tx.sv:27$180_Y
+  ctrl inputs: { \uart.start $flatten\uart.$eq$rtl/uart_tx.sv:45$184_Y $flatten\uart.$eq$rtl/uart_tx.sv:83$192_Y \rst }
+  ctrl outputs: { $flatten\uart.$eq$rtl/uart_tx.sv:27$180_Y $flatten\uart.$0\state[2:0] $flatten\uart.$eq$rtl/uart_tx.sv:47$185_Y $flatten\uart.$procmux$833_CMP $flatten\uart.$procmux$858_CMP }
+  transition:      3'000 4'0--0 ->      3'000 7'1000000
+  transition:      3'000 4'1--0 ->      3'001 7'1001000
+  transition:      3'000 4'---1 ->      3'000 7'1000000
+  transition:      3'010 4'-0-0 ->      3'010 7'0010100
+  transition:      3'010 4'-100 ->      3'010 7'0010100
+  transition:      3'010 4'-110 ->      3'011 7'0011100
+  transition:      3'010 4'---1 ->      3'000 7'0000100
+  transition:      3'001 4'-0-0 ->      3'001 7'0001001
+  transition:      3'001 4'-1-0 ->      3'010 7'0010001
+  transition:      3'001 4'---1 ->      3'000 7'0000001
+  transition:      3'011 4'-0-0 ->      3'011 7'0011010
+  transition:      3'011 4'-1-0 ->      3'000 7'0000010
+  transition:      3'011 4'---1 ->      3'000 7'0000010
+
+7.11.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\uart.state$1119' from module `\fpga_top_yosys'.
+Optimizing FSM `$fsm$\state$1111' from module `\fpga_top_yosys'.
+Optimizing FSM `$fsm$\accelerator.dut.state$1106' from module `\fpga_top_yosys'.
+  Merging pattern 3'--0 and 3'--1 from group (1 0 5'10000).
+  Merging pattern 3'--1 and 3'--0 from group (1 0 5'10000).
+
+7.11.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 32 unused cells and 32 unused wires.
+<suppressed ~36 debug messages>
+
+7.11.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\accelerator.dut.state$1106' from module `\fpga_top_yosys'.
+  Removing unused output signal $flatten\accelerator.\dut.$0\state[1:0] [0].
+  Removing unused output signal $flatten\accelerator.\dut.$0\state[1:0] [1].
+Optimizing FSM `$fsm$\state$1111' from module `\fpga_top_yosys'.
+  Removing unused output signal $0\state[2:0] [0].
+  Removing unused output signal $0\state[2:0] [1].
+  Removing unused output signal $0\state[2:0] [2].
+  Removing unused output signal $procmux$736_CMP.
+  Removing unused output signal $procmux$744_CMP.
+Optimizing FSM `$fsm$\uart.state$1119' from module `\fpga_top_yosys'.
+  Removing unused output signal $flatten\uart.$procmux$833_CMP.
+  Removing unused output signal $flatten\uart.$0\state[2:0] [0].
+  Removing unused output signal $flatten\uart.$0\state[2:0] [1].
+  Removing unused output signal $flatten\uart.$0\state[2:0] [2].
+
+7.11.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\accelerator.dut.state$1106' from module `\fpga_top_yosys' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> --1
+  10 -> -1-
+  01 -> 1--
+Recoding FSM `$fsm$\state$1111' from module `\fpga_top_yosys' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> -----1
+  100 -> ----1-
+  010 -> ---1--
+  001 -> --1---
+  101 -> -1----
+  011 -> 1-----
+Recoding FSM `$fsm$\uart.state$1119' from module `\fpga_top_yosys' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> ---1
+  010 -> --1-
+  001 -> -1--
+  011 -> 1---
+
+7.11.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\accelerator.dut.state$1106' from module `fpga_top_yosys':
+-------------------------------------
+
+  Information on FSM $fsm$\accelerator.dut.state$1106 (\accelerator.dut.state):
+
+  Number of input signals:    3
+  Number of output signals:   3
+  Number of state bits:       3
+
+  Input signals:
+    0: \rst
+    1: \accelerator.dut.start
+    2: \accelerator.dut.count
+
+  Output signals:
+    0: $flatten\accelerator.\dut.$eq$synthesis/dot_product_yosys.sv:48$165_Y
+    1: $flatten\accelerator.\dut.$eq$synthesis/dot_product_yosys.sv:55$167_Y
+    2: \accelerator.dot_done
+
+  State encoding:
+    0:      3'--1  <RESET STATE>
+    1:      3'-1-
+    2:      3'1--
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 3'-00   ->     0 3'001
+      1:     0 3'--1   ->     0 3'001
+      2:     0 3'-10   ->     2 3'001
+      3:     1 3'---   ->     0 3'100
+      4:     2 3'--1   ->     0 3'010
+      5:     2 3'1-0   ->     1 3'010
+      6:     2 3'0-0   ->     2 3'010
+
+-------------------------------------
+
+FSM `$fsm$\state$1111' from module `fpga_top_yosys':
+-------------------------------------
+
+  Information on FSM $fsm$\state$1111 (\state):
+
+  Number of input signals:    4
+  Number of output signals:   4
+  Number of state bits:       6
+
+  Input signals:
+    0: \rst
+    1: $logic_and$synthesis/fpga_top_yosys.sv:145$138_Y
+    2: $eq$synthesis/fpga_top_yosys.sv:156$140_Y
+    3: $flatten\uart.$eq$rtl/uart_tx.sv:27$180_Y
+
+  Output signals:
+    0: $eq$synthesis/fpga_top_yosys.sv:119$130_Y
+    1: $procmux$739_CMP
+    2: $procmux$741_CMP
+    3: $procmux$743_CMP
+
+  State encoding:
+    0:   6'-----1  <RESET STATE>
+    1:   6'----1-
+    2:   6'---1--
+    3:   6'--1---
+    4:   6'-1----
+    5:   6'1-----
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 4'---1   ->     0 4'0000
+      1:     0 4'---0   ->     3 4'0000
+      2:     1 4'---1   ->     0 4'0001
+      3:     1 4'0--0   ->     1 4'0001
+      4:     1 4'11-0   ->     4 4'0001
+      5:     1 4'10-0   ->     5 4'0001
+      6:     2 4'---1   ->     0 4'0000
+      7:     2 4'--00   ->     2 4'0000
+      8:     2 4'--10   ->     5 4'0000
+      9:     3 4'---1   ->     0 4'1000
+     10:     3 4'---0   ->     2 4'1000
+     11:     4 4'---1   ->     0 4'0010
+     12:     4 4'---0   ->     4 4'0010
+     13:     5 4'---1   ->     0 4'0100
+     14:     5 4'---0   ->     1 4'0100
+
+-------------------------------------
+
+FSM `$fsm$\uart.state$1119' from module `fpga_top_yosys':
+-------------------------------------
+
+  Information on FSM $fsm$\uart.state$1119 (\uart.state):
+
+  Number of input signals:    4
+  Number of output signals:   3
+  Number of state bits:       4
+
+  Input signals:
+    0: \rst
+    1: $flatten\uart.$eq$rtl/uart_tx.sv:83$192_Y
+    2: $flatten\uart.$eq$rtl/uart_tx.sv:45$184_Y
+    3: \uart.start
+
+  Output signals:
+    0: $flatten\uart.$procmux$858_CMP
+    1: $flatten\uart.$eq$rtl/uart_tx.sv:47$185_Y
+    2: $flatten\uart.$eq$rtl/uart_tx.sv:27$180_Y
+
+  State encoding:
+    0:     4'---1  <RESET STATE>
+    1:     4'--1-
+    2:     4'-1--
+    3:     4'1---
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 4'0--0   ->     0 3'100
+      1:     0 4'---1   ->     0 3'100
+      2:     0 4'1--0   ->     2 3'100
+      3:     1 4'---1   ->     0 3'010
+      4:     1 4'-100   ->     1 3'010
+      5:     1 4'-0-0   ->     1 3'010
+      6:     1 4'-110   ->     3 3'010
+      7:     2 4'---1   ->     0 3'001
+      8:     2 4'-1-0   ->     1 3'001
+      9:     2 4'-0-0   ->     2 3'001
+     10:     3 4'-1-0   ->     0 3'000
+     11:     3 4'---1   ->     0 3'000
+     12:     3 4'-0-0   ->     3 3'000
+
+-------------------------------------
+
+7.11.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\accelerator.dut.state$1106' from module `\fpga_top_yosys'.
+Mapping FSM `$fsm$\state$1111' from module `\fpga_top_yosys'.
+Mapping FSM `$fsm$\uart.state$1119' from module `\fpga_top_yosys'.
+
+7.12. Executing OPT pass (performing simple optimizations).
+
+7.12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~15 debug messages>
+
+7.12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+7.12.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fpga_top_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~25 debug messages>
+
+7.12.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fpga_top_yosys.
+Performed a total of 0 changes.
+
+7.12.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.12.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$1081 ($dff) from module fpga_top_yosys (D = $procmux$763_Y, Q = \result_index, rval = 3'000).
+Adding EN signal on $auto$ff.cc:266:slice$1241 ($sdff) from module fpga_top_yosys (D = $add$synthesis/fpga_top_yosys.sv:122$135_Y [2:0], Q = \result_index).
+Adding SRST signal on $flatten\uart.$procdff$1090 ($dff) from module fpga_top_yosys (D = $flatten\uart.$procmux$894_Y, Q = \uart.data_reg, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:266:slice$1243 ($sdff) from module fpga_top_yosys (D = \uart.data, Q = \uart.data_reg).
+Adding SRST signal on $flatten\uart.$procdff$1089 ($dff) from module fpga_top_yosys (D = $flatten\uart.$procmux$907_Y, Q = \uart.bit_index, rval = 3'000).
+Adding EN signal on $auto$ff.cc:266:slice$1247 ($sdff) from module fpga_top_yosys (D = $flatten\uart.$procmux$907_Y, Q = \uart.bit_index).
+Adding SRST signal on $flatten\uart.$procdff$1088 ($dff) from module fpga_top_yosys (D = $flatten\uart.$add$rtl/uart_tx.sv:52$187_Y [6:0], Q = \uart.counter, rval = 7'0000000).
+Adding EN signal on $flatten\accelerator.\dut.$procdff$1086 ($dff) from module fpga_top_yosys (D = $flatten\accelerator.\dut.$0\acc[16:0], Q = \accelerator.dut.acc).
+Adding EN signal on $flatten\accelerator.\dut.$procdff$1085 ($dff) from module fpga_top_yosys (D = \accelerator.dut.weight, Q = \accelerator.dut.weight_reg).
+Adding EN signal on $flatten\accelerator.\dut.$procdff$1084 ($dff) from module fpga_top_yosys (D = \accelerator.dut.input_data, Q = \accelerator.dut.input_reg).
+Adding EN signal on $flatten\accelerator.$procdff$1098 ($dff) from module fpga_top_yosys (D = $flatten\accelerator.$0\col_index[1:0], Q = \accelerator.col_index).
+Adding EN signal on $flatten\accelerator.$procdff$1096 ($dff) from module fpga_top_yosys (D = 51'000000000000000000000000000000000000000000000000000, Q = \accelerator.bias_reg).
+Adding EN signal on $flatten\accelerator.$procdff$1095 ($dff) from module fpga_top_yosys (D = 67305985, Q = \accelerator.input_data_reg).
+Adding EN signal on $flatten\accelerator.$procdff$1094 ($dff) from module fpga_top_yosys (D = $flatten\accelerator.$2$lookahead\output_data$200[107:0]$226, Q = \accelerator.output_data).
+Adding EN signal on $flatten\accelerator.$procdff$1093 ($dff) from module fpga_top_yosys (D = 48'000000110000000100000000000000100000000000000001, Q = \accelerator.weight_reg).
+Adding SRST signal on $flatten\accelerator.$procdff$1092 ($dff) from module fpga_top_yosys (D = \accelerator.next_state, Q = \accelerator.state, rval = 3'000).
+Setting constant 1-bit at position 0 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 14 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 15 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 16 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 1-bit at position 17 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 18 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 19 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 20 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 21 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 22 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 23 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 24 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 25 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 26 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 27 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 28 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 29 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 30 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 31 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 1-bit at position 32 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 33 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 34 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 35 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 36 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 37 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 38 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 39 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 1-bit at position 40 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 1-bit at position 41 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 42 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 43 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 44 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 45 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 46 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 47 on $auto$ff.cc:266:slice$1271 ($dffe) from module fpga_top_yosys.
+Setting constant 1-bit at position 0 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 1-bit at position 9 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 14 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 15 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 1-bit at position 16 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 1-bit at position 17 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 18 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 19 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 20 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 21 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 22 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 23 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 24 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 25 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 1-bit at position 26 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 27 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 28 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 29 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 30 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 31 on $auto$ff.cc:266:slice$1269 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 14 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 15 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 16 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 17 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 18 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 19 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 20 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 21 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 22 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 23 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 24 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 25 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 26 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 27 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 28 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 29 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 30 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 31 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 32 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 33 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 34 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 35 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 36 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 37 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 38 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 39 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 40 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 41 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 42 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 43 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 44 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 45 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 46 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 47 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 48 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 49 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+Setting constant 0-bit at position 50 on $auto$ff.cc:266:slice$1268 ($dffe) from module fpga_top_yosys.
+
+7.12.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 16 unused cells and 46 unused wires.
+<suppressed ~17 debug messages>
+
+7.12.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~3 debug messages>
+
+7.12.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.12.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fpga_top_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~18 debug messages>
+
+7.12.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fpga_top_yosys.
+Performed a total of 0 changes.
+
+7.12.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.12.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.12.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.12.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.12.16. Finished OPT passes. (There is nothing left to do.)
+
+7.13. Executing WREDUCE pass (reducing word size of cells).
+Removed top 29 bits (of 32) from port B of cell fpga_top_yosys.$lt$synthesis/fpga_top_yosys.sv:121$133 ($lt).
+Removed top 31 bits (of 32) from port B of cell fpga_top_yosys.$add$synthesis/fpga_top_yosys.sv:122$135 ($add).
+Removed top 29 bits (of 32) from port Y of cell fpga_top_yosys.$add$synthesis/fpga_top_yosys.sv:122$135 ($add).
+Removed top 1 bits (of 3) from port B of cell fpga_top_yosys.$procmux$772_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell fpga_top_yosys.$procmux$773_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell fpga_top_yosys.$procmux$774_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell fpga_top_yosys.$auto$opt_dff.cc:195:make_patterns_logic$1254 ($ne).
+Removed top 1 bits (of 17) from port B of cell fpga_top_yosys.$flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:56$168 ($add).
+Removed top 31 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:62$171 ($add).
+Removed top 31 bits (of 32) from port Y of cell fpga_top_yosys.$flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:62$171 ($add).
+Removed top 27 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.\dut.$shiftx$synthesis/dot_product_yosys.sv:0$176 ($shiftx).
+Removed top 27 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.\dut.$shiftx$synthesis/dot_product_yosys.sv:0$179 ($shiftx).
+Removed top 2 bits (of 3) from port B of cell fpga_top_yosys.$flatten\accelerator.$procmux$952_CMP0 ($eq).
+Removed top 2 bits (of 3) from mux cell fpga_top_yosys.$flatten\accelerator.$procmux$943 ($mux).
+Removed top 1 bits (of 3) from port B of cell fpga_top_yosys.$flatten\accelerator.$procmux$936_CMP0 ($eq).
+Removed top 2 bits (of 3) from mux cell fpga_top_yosys.$flatten\accelerator.$procmux$933 ($mux).
+Removed top 1 bits (of 18) from port A of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:112$284 ($add).
+Removed top 1 bits (of 18) from port B of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:112$284 ($add).
+Removed top 27 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:112$281 ($mul).
+Removed top 25 bits (of 32) from port Y of cell fpga_top_yosys.$flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:112$281 ($mul).
+Removed top 30 bits (of 32) from port A of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:105$274 ($add).
+Removed top 29 bits (of 32) from port Y of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:105$274 ($add).
+Removed top 30 bits (of 32) from port A of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:102$270 ($add).
+Removed top 31 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:102$270 ($add).
+Removed top 29 bits (of 32) from port Y of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:102$270 ($add).
+Removed top 26 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.$shiftx$synthesis/matrix_layer_yosys.sv:0$268 ($shiftx).
+Removed top 26 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.$shiftx$synthesis/matrix_layer_yosys.sv:0$264 ($shiftx).
+Removed top 31 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:92$257 ($add).
+Removed top 30 bits (of 32) from port Y of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:92$257 ($add).
+Removed top 31 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:88$256 ($add).
+Removed top 31 bits (of 32) from port Y of cell fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:88$256 ($add).
+Converting cell fpga_top_yosys.$flatten\accelerator.$neg$synthesis/matrix_layer_yosys.sv:0$232 ($neg) from signed to unsigned.
+Removed top 1 bits (of 33) from port A of cell fpga_top_yosys.$flatten\accelerator.$neg$synthesis/matrix_layer_yosys.sv:0$232 ($neg).
+Removed top 27 bits (of 31) from port B of cell fpga_top_yosys.$flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:77$229 ($mul).
+Removed top 30 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:77$227 ($mul).
+Removed top 29 bits (of 32) from port Y of cell fpga_top_yosys.$flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:77$227 ($mul).
+Removed top 31 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.$lt$synthesis/matrix_layer_yosys.sv:76$219 ($lt).
+Removed top 1 bits (of 3) from port B of cell fpga_top_yosys.$flatten\accelerator.$eq$synthesis/matrix_layer_yosys.sv:75$211 ($eq).
+Removed top 31 bits (of 32) from port B of cell fpga_top_yosys.$flatten\uart.$add$rtl/uart_tx.sv:52$187 ($add).
+Removed top 25 bits (of 32) from port Y of cell fpga_top_yosys.$flatten\uart.$add$rtl/uart_tx.sv:52$187 ($add).
+Removed top 31 bits (of 32) from port B of cell fpga_top_yosys.$flatten\uart.$add$rtl/uart_tx.sv:48$186 ($add).
+Removed top 29 bits (of 32) from port Y of cell fpga_top_yosys.$flatten\uart.$add$rtl/uart_tx.sv:48$186 ($add).
+Removed top 24 bits (of 32) from port B of cell fpga_top_yosys.$flatten\accelerator.$shiftx$synthesis/matrix_layer_yosys.sv:0$283 ($shiftx).
+Removed top 29 bits (of 32) from wire fpga_top_yosys.$add$synthesis/fpga_top_yosys.sv:122$135_Y.
+Removed top 2 bits (of 3) from wire fpga_top_yosys.$flatten\accelerator.$2\next_state[2:0].
+Removed top 2 bits (of 3) from wire fpga_top_yosys.$flatten\accelerator.$3\next_state[2:0].
+Removed top 26 bits (of 32) from wire fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:0$272_Y.
+Removed top 26 bits (of 32) from wire fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:0$276_Y.
+Removed top 25 bits (of 32) from wire fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:0$282_Y.
+Removed top 31 bits (of 32) from wire fpga_top_yosys.$flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:88$256_Y.
+Removed top 29 bits (of 32) from wire fpga_top_yosys.$flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:77$227_Y.
+Removed top 29 bits (of 32) from wire fpga_top_yosys.$flatten\uart.$add$rtl/uart_tx.sv:48$186_Y.
+Removed top 25 bits (of 32) from wire fpga_top_yosys.$flatten\uart.$add$rtl/uart_tx.sv:52$187_Y.
+
+7.14. Executing PEEPOPT pass (run peephole optimizers).
+shiftmul pattern in fpga_top_yosys: shift=$flatten\accelerator.$shiftx$synthesis/matrix_layer_yosys.sv:0$283, mul=$flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:112$281
+
+7.15. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 1 unused cells and 13 unused wires.
+<suppressed ~2 debug messages>
+
+7.16. Executing SHARE pass (SAT-based resource sharing).
+Found 2 cells in module fpga_top_yosys that may be considered for resource sharing.
+  Analyzing resource sharing options for $flatten\accelerator.\dut.\compute_multiplier.$mul$rtl/multiplier.sv:10$141 ($mul):
+    Found 2 activation_patterns using ctrl signal { \accelerator.dut.state [2] \accelerator.dut.count }.
+    No candidates found.
+  Analyzing resource sharing options for $flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:77$229 ($mul):
+    Cell is always active. Therefore no sharing is possible.
+
+7.17. Executing TECHMAP pass (map to technology primitives).
+
+7.17.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/usr/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+7.17.2. Continuing TECHMAP pass.
+Using template $paramod$12bed99da6b1b0c2b04b72175d8519b83392a99c\_90_lut_cmp_ for cells of type $lt.
+No more expansions possible.
+<suppressed ~66 debug messages>
+
+7.18. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.19. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+7.20. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module fpga_top_yosys:
+  creating $macc model for $add$synthesis/fpga_top_yosys.sv:122$135 ($add).
+  creating $macc model for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:102$270 ($add).
+  creating $macc model for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:105$274 ($add).
+  creating $macc model for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:112$284 ($add).
+  creating $macc model for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:77$228 ($add).
+  creating $macc model for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:88$256 ($add).
+  creating $macc model for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:92$257 ($add).
+  creating $macc model for $flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:77$227 ($mul).
+  creating $macc model for $flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:77$229 ($mul).
+  creating $macc model for $flatten\accelerator.$neg$synthesis/matrix_layer_yosys.sv:0$232 ($neg).
+  creating $macc model for $flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:56$168 ($add).
+  creating $macc model for $flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:62$171 ($add).
+  creating $macc model for $flatten\accelerator.\dut.\compute_multiplier.$mul$rtl/multiplier.sv:10$141 ($mul).
+  creating $macc model for $flatten\uart.$add$rtl/uart_tx.sv:48$186 ($add).
+  creating $macc model for $flatten\uart.$add$rtl/uart_tx.sv:52$187 ($add).
+  merging $macc model for $flatten\accelerator.\dut.\compute_multiplier.$mul$rtl/multiplier.sv:10$141 into $flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:56$168.
+  creating $alu model for $macc $flatten\uart.$add$rtl/uart_tx.sv:48$186.
+  creating $alu model for $macc $flatten\uart.$add$rtl/uart_tx.sv:52$187.
+  creating $alu model for $macc $flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:62$171.
+  creating $alu model for $macc $flatten\accelerator.$neg$synthesis/matrix_layer_yosys.sv:0$232.
+  creating $alu model for $macc $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:92$257.
+  creating $alu model for $macc $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:88$256.
+  creating $alu model for $macc $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:77$228.
+  creating $alu model for $macc $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:112$284.
+  creating $alu model for $macc $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:105$274.
+  creating $alu model for $macc $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:102$270.
+  creating $alu model for $macc $add$synthesis/fpga_top_yosys.sv:122$135.
+  creating $macc cell for $flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:77$229: $auto$alumacc.cc:365:replace_macc$1286
+  creating $macc cell for $flatten\accelerator.$mul$synthesis/matrix_layer_yosys.sv:77$227: $auto$alumacc.cc:365:replace_macc$1287
+  creating $macc cell for $flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:56$168: $auto$alumacc.cc:365:replace_macc$1288
+  creating $alu model for $flatten\accelerator.$lt$synthesis/matrix_layer_yosys.sv:76$219 ($lt): new $alu
+  creating $alu cell for $flatten\accelerator.$lt$synthesis/matrix_layer_yosys.sv:76$219: $auto$alumacc.cc:485:replace_alu$1290
+  creating $alu cell for $add$synthesis/fpga_top_yosys.sv:122$135: $auto$alumacc.cc:485:replace_alu$1303
+  creating $alu cell for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:102$270: $auto$alumacc.cc:485:replace_alu$1306
+  creating $alu cell for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:105$274: $auto$alumacc.cc:485:replace_alu$1309
+  creating $alu cell for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:112$284: $auto$alumacc.cc:485:replace_alu$1312
+  creating $alu cell for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:77$228: $auto$alumacc.cc:485:replace_alu$1315
+  creating $alu cell for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:88$256: $auto$alumacc.cc:485:replace_alu$1318
+  creating $alu cell for $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:92$257: $auto$alumacc.cc:485:replace_alu$1321
+  creating $alu cell for $flatten\accelerator.$neg$synthesis/matrix_layer_yosys.sv:0$232: $auto$alumacc.cc:485:replace_alu$1324
+  creating $alu cell for $flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:62$171: $auto$alumacc.cc:485:replace_alu$1327
+  creating $alu cell for $flatten\uart.$add$rtl/uart_tx.sv:52$187: $auto$alumacc.cc:485:replace_alu$1330
+  creating $alu cell for $flatten\uart.$add$rtl/uart_tx.sv:48$186: $auto$alumacc.cc:485:replace_alu$1333
+  created 12 $alu and 3 $macc cells.
+
+7.21. Executing OPT pass (performing simple optimizations).
+
+7.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~1 debug messages>
+
+7.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.21.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fpga_top_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~18 debug messages>
+
+7.21.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fpga_top_yosys.
+Performed a total of 0 changes.
+
+7.21.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.21.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.21.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 2 unused cells and 5 unused wires.
+<suppressed ~6 debug messages>
+
+7.21.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.21.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.21.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fpga_top_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~18 debug messages>
+
+7.21.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fpga_top_yosys.
+Performed a total of 0 changes.
+
+7.21.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.21.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.21.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.21.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.21.16. Finished OPT passes. (There is nothing left to do.)
+
+7.22. Executing MEMORY pass.
+
+7.22.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+7.22.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+7.22.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+7.22.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+7.22.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+7.22.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.22.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+7.22.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+7.22.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.22.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+7.23. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.24. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+
+7.25. Executing TECHMAP pass (map to technology primitives).
+
+7.25.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/ice40/brams_map.v
+Parsing Verilog input from `/usr/bin/../share/yosys/ice40/brams_map.v' to AST representation.
+Generating RTLIL representation for module `\$__ICE40_RAM4K_'.
+Successfully finished Verilog frontend.
+
+7.25.2. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/ice40/spram_map.v
+Parsing Verilog input from `/usr/bin/../share/yosys/ice40/spram_map.v' to AST representation.
+Generating RTLIL representation for module `\$__ICE40_SPRAM_'.
+Successfully finished Verilog frontend.
+
+7.25.3. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+7.26. Executing ICE40_BRAMINIT pass.
+
+7.27. Executing OPT pass (performing simple optimizations).
+
+7.27.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~135 debug messages>
+
+7.27.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.27.3. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$1265 ($dffe) from module fpga_top_yosys (D = $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:92$257_Y [1:0], Q = \accelerator.col_index, rval = 2'00).
+Adding SRST signal on $auto$ff.cc:266:slice$1260 ($dffe) from module fpga_top_yosys (D = $flatten\accelerator.\dut.$add$synthesis/dot_product_yosys.sv:56$168_Y, Q = \accelerator.dut.acc, rval = 17'00000000000000000).
+
+7.27.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 3 unused cells and 47 unused wires.
+<suppressed ~5 debug messages>
+
+7.27.5. Rerunning OPT passes. (Removed registers in this run.)
+
+7.27.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.27.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.27.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.27.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.27.10. Finished fast OPT passes.
+
+7.28. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+7.29. Executing OPT pass (performing simple optimizations).
+
+7.29.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.29.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.29.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fpga_top_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+7.29.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fpga_top_yosys.
+    Consolidated identical input bits for $mux cell $flatten\accelerator.$procmux$916:
+      Old ports: A=3'001, B=3'100, Y=$flatten\accelerator.$5\next_state[2:0]
+      New ports: A=2'01, B=2'10, Y={ $flatten\accelerator.$5\next_state[2:0] [2] $flatten\accelerator.$5\next_state[2:0] [0] }
+      New connections: $flatten\accelerator.$5\next_state[2:0] [1] = 1'0
+  Optimizing cells in module \fpga_top_yosys.
+    Consolidated identical input bits for $mux cell $flatten\accelerator.$procmux$925:
+      Old ports: A=3'001, B=$flatten\accelerator.$5\next_state[2:0], Y=$flatten\accelerator.$4\next_state[2:0]
+      New ports: A=2'01, B={ $flatten\accelerator.$5\next_state[2:0] [2] $flatten\accelerator.$5\next_state[2:0] [0] }, Y={ $flatten\accelerator.$4\next_state[2:0] [2] $flatten\accelerator.$4\next_state[2:0] [0] }
+      New connections: $flatten\accelerator.$4\next_state[2:0] [1] = 1'0
+  Optimizing cells in module \fpga_top_yosys.
+Performed a total of 2 changes.
+
+7.29.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.29.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.29.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.29.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.29.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.29.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fpga_top_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+7.29.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fpga_top_yosys.
+Performed a total of 0 changes.
+
+7.29.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.29.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.29.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.29.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.29.16. Finished OPT passes. (There is nothing left to do.)
+
+7.30. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+7.31. Executing TECHMAP pass (map to technology primitives).
+
+7.31.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+7.31.2. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/ice40/arith_map.v
+Parsing Verilog input from `/usr/bin/../share/yosys/ice40/arith_map.v' to AST representation.
+Generating RTLIL representation for module `\_80_ice40_alu'.
+Successfully finished Verilog frontend.
+
+7.31.3. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$e830d104b5de63a966ae948f6aff012e63986700\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $lut.
+Using template $paramod$103b4016182df467cceab67bcf3e18e6361ec0fd\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $dffe.
+Using template $paramod$constmap:21cc5e18f9188dbc8d1b43e8207824e8afccae11$paramod$a9fc0d63e6c38b0c69d194987a06ef4809fd51d0\_90_shift_shiftx for cells of type $shiftx.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $sdffce.
+Using template $paramod$740b056ede97228d3eae64ea2fdc81f0a33e0fe7\_80_ice40_alu for cells of type $alu.
+Using template $paramod$d31bf4d7d72e59528d18fbd4f322e9d608532043\_90_pmux for cells of type $pmux.
+Using template $paramod$constmap:98fc5e9834d32106ec71b54ca5b6b0c7ea9b5618$paramod$1f1d8fb7ba170fec4942d2d0458400d24aed163a\_90_shift_shiftx for cells of type $shiftx.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$649fc39eef2451024566705288528c8671211199\_80_ice40_alu for cells of type $alu.
+Using template $paramod$constmap:3ac3599947f81a49bcda37034a386ecfb9f48d66$paramod$d90236623e3331277c88cb1a78c66d8198dee965\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$5e21cfa2ff6d644e10a0fc1dcdb22e5eb183bcd3\_80_ice40_alu for cells of type $alu.
+Using template $paramod$constmap:43714c7d5081a4da0d42567fda9c77210ee97e76$paramod$9e4be6cb0a22a7c30f9354dd4d374e228a8dae22\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$constmap:fde6c1d668bc7ed1a971220e1e78e4d7274b41ba$paramod$e98390fa1c708a94909cc933dc8c9f61b5dde5f2\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$constmap:3ec9d1e100ee1b72a17000a3ee3dbf88a2bdf9e0$paramod$e86c73f4477ba7aaabfc8a8f6398dd038fbe5161\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$99501223b6f7e5af250351eeb57edb5403a5ad0b\_80_ice40_alu for cells of type $alu.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using template $paramod$constmap:d47acdb4d21661fb55cccc88ff9a9ab6a383caea$paramod$78411a1e1ac8d01d20b88b3d69dd085b897e7939\_90_shift_shiftx for cells of type $shift.
+Using template $paramod$constmap:95a212f6f9e0858422e56f944436671a04059edd$paramod$0eb9b78486f71a2abf3699773f3d36170252c969\_90_shift_shiftx for cells of type $shift.
+Analyzing pattern of constant bits for this cell:
+  Constant input on bit 0 of port A: 1'1
+  Constant input on bit 1 of port A: 1'1
+  Constant input on bit 2 of port A: 1'1
+  Constant input on bit 3 of port A: 1'1
+  Constant input on bit 4 of port A: 1'1
+  Constant input on bit 5 of port A: 1'1
+  Constant input on bit 6 of port A: 1'1
+  Constant input on bit 7 of port A: 1'1
+  Constant input on bit 8 of port A: 1'1
+  Constant input on bit 9 of port A: 1'1
+  Constant input on bit 10 of port A: 1'1
+  Constant input on bit 11 of port A: 1'1
+  Constant input on bit 12 of port A: 1'1
+  Constant input on bit 13 of port A: 1'1
+  Constant input on bit 14 of port A: 1'1
+  Constant input on bit 15 of port A: 1'1
+  Constant input on bit 16 of port A: 1'1
+  Constant input on bit 17 of port A: 1'1
+Creating constmapped module `$paramod$constmap:ead740e687daae452f59d370caa56d99eaea71e8$paramod$78411a1e1ac8d01d20b88b3d69dd085b897e7939\_90_shift_shiftx'.
+
+7.31.61. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$constmap:ead740e687daae452f59d370caa56d99eaea71e8$paramod$78411a1e1ac8d01d20b88b3d69dd085b897e7939\_90_shift_shiftx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$2874.
+    dead port 2/2 on $mux $procmux$2868.
+    dead port 2/2 on $mux $procmux$2862.
+    dead port 2/2 on $mux $procmux$2856.
+    dead port 2/2 on $mux $procmux$2850.
+    dead port 2/2 on $mux $procmux$2844.
+    dead port 2/2 on $mux $procmux$2838.
+    dead port 2/2 on $mux $procmux$2832.
+Removed 8 multiplexer ports.
+<suppressed ~2318 debug messages>
+
+7.31.62. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$constmap:ead740e687daae452f59d370caa56d99eaea71e8$paramod$78411a1e1ac8d01d20b88b3d69dd085b897e7939\_90_shift_shiftx.
+<suppressed ~26 debug messages>
+Removed 0 unused cells and 13 unused wires.
+Using template $paramod$constmap:ead740e687daae452f59d370caa56d99eaea71e8$paramod$78411a1e1ac8d01d20b88b3d69dd085b897e7939\_90_shift_shiftx for cells of type $shift.
+Using template $paramod$fc972a7a46956c1788f3cb5257b53c8f1df2d0cc\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc.
+  add 2'11 * \accelerator.row_index (2x1 bits, unsigned)
+  add \accelerator.dut.acc (17 bits, signed)
+  add \accelerator.dut.compute_multiplier.a * \accelerator.dut.compute_multiplier.b (8x8 bits, signed)
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_80_ice40_alu for cells of type $alu.
+  add { 28'0000000000000000000000000000 $flatten\accelerator.$add$synthesis/matrix_layer_yosys.sv:77$228_Y [3:0] } * 4'1001 (32x4 bits, unsigned)
+Using template $paramod$c7447660fa69ed31d29bfd0f7bfde4c42f66c7e6\_80_ice40_alu for cells of type $alu.
+Using template $paramod$constmap:ee5af906ae0d3d414c6a0471604c553ef70c8e09$paramod$92adee9538f2381d8e5006822c900eb986d754e8\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$c5c783b17ab1d780abfad8cfe6563a0a7b47a3b0\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000001 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010001 for cells of type $fa.
+Using template $paramod$3bb72ad0665cdca279bbc49ed6a39f403f16497f\_80_ice40_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011111 for cells of type $fa.
+Using template $paramod$ebf89ea36a793f0f77858f212141d47c833068ad\_80_ice40_alu for cells of type $alu.
+No more expansions possible.
+<suppressed ~847 debug messages>
+
+7.32. Executing OPT pass (performing simple optimizations).
+
+7.32.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~7965 debug messages>
+
+7.32.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~1962 debug messages>
+Removed a total of 654 cells.
+
+7.32.3. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$1928 ($_DFFE_PP_) from module fpga_top_yosys.
+Setting constant 1-bit at position 0 on $auto$ff.cc:266:slice$1914 ($_DFFE_PP_) from module fpga_top_yosys.
+
+7.32.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 1228 unused cells and 708 unused wires.
+<suppressed ~1229 debug messages>
+
+7.32.5. Rerunning OPT passes. (Removed registers in this run.)
+
+7.32.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~214 debug messages>
+
+7.32.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+7.32.8. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$2040 ($_SDFF_PP0_) from module fpga_top_yosys (D = $flatten\accelerator.$procmux$949.Y_B [1], Q = \accelerator.state [1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$2041 ($_SDFF_PP0_) from module fpga_top_yosys (D = $flatten\accelerator.$procmux$949.B_AND_S [2], Q = \accelerator.state [2], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$2039 ($_SDFF_PP0_) from module fpga_top_yosys (D = $flatten\accelerator.$procmux$949.Y_B [0], Q = \accelerator.state [0], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1785 ($_DFFE_PP_) from module fpga_top_yosys (D = 1'x, Q = \accelerator.dut.weight_reg [14], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1771 ($_DFFE_PP_) from module fpga_top_yosys (D = $auto$alumacc.cc:485:replace_alu$1309.X [0], Q = \accelerator.dut.weight_reg [0], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1772 ($_DFFE_PP_) from module fpga_top_yosys (D = $auto$alumacc.cc:485:replace_alu$1309.X [0], Q = \accelerator.dut.weight_reg [1], rval = 1'0).
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$14558 ($_SDFFCE_PN0P_) from module fpga_top_yosys.
+
+7.32.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 8 unused cells and 17 unused wires.
+<suppressed ~10 debug messages>
+
+7.32.10. Rerunning OPT passes. (Removed registers in this run.)
+
+7.32.11. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~142 debug messages>
+
+7.32.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+7.32.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.32.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 2 unused cells and 26 unused wires.
+<suppressed ~3 debug messages>
+
+7.32.15. Finished fast OPT passes.
+
+7.33. Executing ICE40_OPT pass (performing simple optimizations).
+
+7.33.1. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1290.slice[0].carry: CO=$auto$alumacc.cc:485:replace_alu$1290.BB [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1303.slice[0].carry: CO=\result_index [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1309.slice[0].carry: CO=\accelerator.col_index [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1309.slice[2].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[0].carry: CO=1'1
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[32].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [32]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1330.slice[0].carry: CO=\uart.counter [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1333.slice[0].carry: CO=\uart.bit_index [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3491.slice[0].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[0].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[10].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[11].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[12].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[13].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[14].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[15].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[16].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[17].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[18].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[19].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[20].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[21].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[22].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[23].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[24].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[25].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[26].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[27].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[28].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[29].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[30].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[7].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[8].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[9].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$opt_expr.cc:1942:replace_const_cells$1356.slice[2].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$opt_expr.cc:1942:replace_const_cells$1356.slice[3].carry: CO=1'0
+
+7.33.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~34 debug messages>
+
+7.33.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~135 debug messages>
+Removed a total of 45 cells.
+
+7.33.4. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$1779 ($_DFFE_PP_) from module fpga_top_yosys (D = $techmap$flatten\accelerator.$shiftx$synthesis/matrix_layer_yosys.sv:0$277.$12\buffer[175:0] [0], Q = \accelerator.dut.weight_reg [8], rval = 1'1).
+
+7.33.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 2 unused cells and 6 unused wires.
+<suppressed ~3 debug messages>
+
+7.33.6. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.7. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[0].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[1].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.BB [1]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3491.slice[1].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[1].carry: CO=1'0
+
+7.33.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~1 debug messages>
+
+7.33.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.12. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.13. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[1].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3491.slice[2].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[2].carry: CO=1'0
+
+7.33.14. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.15. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.16. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.18. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.19. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[2].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3491.slice[3].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[3].carry: CO=1'0
+
+7.33.20. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.22. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.23. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.24. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.25. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[3].carry: CO=1'0
+
+7.33.26. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.27. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.28. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.29. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.30. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.31. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[4].carry: CO=1'0
+
+7.33.32. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.33. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.34. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.35. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.36. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.37. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[5].carry: CO=1'0
+
+7.33.38. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.39. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.40. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.41. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.42. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.43. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[6].carry: CO=1'0
+
+7.33.44. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.45. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.46. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.47. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.48. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.49. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[7].carry: CO=1'0
+
+7.33.50. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.51. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.52. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.53. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.54. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.55. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[8].carry: CO=1'0
+
+7.33.56. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.57. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.58. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.59. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.60. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.61. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[9].carry: CO=1'0
+
+7.33.62. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.63. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.64. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.65. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.66. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.67. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[10].carry: CO=1'0
+
+7.33.68. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.69. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.70. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.71. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.72. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.73. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[11].carry: CO=1'0
+
+7.33.74. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.75. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.76. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.77. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.78. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.79. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[12].carry: CO=1'0
+
+7.33.80. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.81. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.82. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.83. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.84. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.85. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[13].carry: CO=1'0
+
+7.33.86. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.87. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.88. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.89. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.90. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.91. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[14].carry: CO=1'0
+
+7.33.92. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.93. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.94. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.95. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.96. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.97. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[15].carry: CO=1'0
+
+7.33.98. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.99. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.100. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.101. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.102. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.103. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[16].carry: CO=1'0
+
+7.33.104. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.105. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.106. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.107. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+7.33.108. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.109. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[17].carry: CO=1'0
+
+7.33.110. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.111. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~15 debug messages>
+Removed a total of 5 cells.
+
+7.33.112. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.113. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+7.33.114. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.115. Running ICE40 specific optimizations.
+
+7.33.116. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~3 debug messages>
+
+7.33.117. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.118. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.119. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.120. Rerunning OPT passes. (Removed registers in this run.)
+
+7.33.121. Running ICE40 specific optimizations.
+
+7.33.122. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.33.123. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.33.124. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.125. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.33.126. Finished OPT passes. (There is nothing left to do.)
+
+7.34. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+
+7.35. Executing TECHMAP pass (map to technology primitives).
+
+7.35.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/usr/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$_DFFE_NP0P_'.
+Generating RTLIL representation for module `\$_DFFE_NP1P_'.
+Generating RTLIL representation for module `\$_DFFE_PP0P_'.
+Generating RTLIL representation for module `\$_DFFE_PP1P_'.
+Generating RTLIL representation for module `\$_SDFF_NP0_'.
+Generating RTLIL representation for module `\$_SDFF_NP1_'.
+Generating RTLIL representation for module `\$_SDFF_PP0_'.
+Generating RTLIL representation for module `\$_SDFF_PP1_'.
+Generating RTLIL representation for module `\$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `\$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `\$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `\$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+7.35.2. Continuing TECHMAP pass.
+Using template \$_DFF_P_ for cells of type $_DFF_P_.
+Using template \$_DFFE_PP_ for cells of type $_DFFE_PP_.
+Using template \$_SDFFCE_PP0P_ for cells of type $_SDFFCE_PP0P_.
+Using template \$_SDFF_PP0_ for cells of type $_SDFF_PP0_.
+Using template \$_SDFFCE_PP1P_ for cells of type $_SDFFCE_PP1P_.
+No more expansions possible.
+<suppressed ~151 debug messages>
+
+7.36. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.37. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1303.slice[0].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1309.slice[0].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1309.slice[2].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[0].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[10].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[11].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[12].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[13].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[14].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[15].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[16].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[1].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[2].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[3].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[4].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[5].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[6].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[7].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[8].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1312.slice[9].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[0].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[1].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[32].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1330.slice[0].carry ($lut).
+Mapping fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1333.slice[0].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3491.slice[0].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3491.slice[1].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3491.slice[2].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3491.slice[3].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[0].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[10].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[1].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[2].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[3].carry ($lut).
+Mapping fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[7].carry ($lut).
+Mapping fpga_top_yosys.$auto$opt_expr.cc:1942:replace_const_cells$1356.slice[2].carry ($lut).
+
+7.38. Executing ICE40_OPT pass (performing simple optimizations).
+
+7.38.1. Running ICE40 specific optimizations.
+
+7.38.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~840 debug messages>
+
+7.38.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~480 debug messages>
+Removed a total of 160 cells.
+
+7.38.4. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.38.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 4 unused cells and 875 unused wires.
+<suppressed ~5 debug messages>
+
+7.38.6. Rerunning OPT passes. (Removed registers in this run.)
+
+7.38.7. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[10].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [10]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[11].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [11]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[12].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [12]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[13].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [13]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[14].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [14]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[15].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [15]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[16].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [16]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[17].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [17]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[18].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [18]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[19].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [19]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[20].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [20]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[21].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [21]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[22].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [22]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[23].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [23]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[24].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [24]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[25].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [25]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[26].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [26]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[27].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [27]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[28].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [28]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[29].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [29]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[30].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [30]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[31].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [31]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[9].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [9]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[4].carry: CO=1'0
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[6].carry: CO=1'0
+
+7.38.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~9 debug messages>
+
+7.38.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~483 debug messages>
+Removed a total of 161 cells.
+
+7.38.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.38.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 0 unused cells and 22 unused wires.
+<suppressed ~1 debug messages>
+
+7.38.12. Rerunning OPT passes. (Removed registers in this run.)
+
+7.38.13. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$alumacc.cc:485:replace_alu$1324.slice[8].carry: CO=$auto$alumacc.cc:485:replace_alu$1324.C [8]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) fpga_top_yosys.$auto$maccmap.cc:240:synth$3564.slice[5].carry: CO=1'0
+
+7.38.14. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~22 debug messages>
+
+7.38.15. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+7.38.16. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.38.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 0 unused cells and 23 unused wires.
+<suppressed ~1 debug messages>
+
+7.38.18. Rerunning OPT passes. (Removed registers in this run.)
+
+7.38.19. Running ICE40 specific optimizations.
+
+7.38.20. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+<suppressed ~2 debug messages>
+
+7.38.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.38.22. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.38.23. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+7.38.24. Rerunning OPT passes. (Removed registers in this run.)
+
+7.38.25. Running ICE40 specific optimizations.
+
+7.38.26. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fpga_top_yosys.
+
+7.38.27. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fpga_top_yosys'.
+Removed a total of 0 cells.
+
+7.38.28. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.38.29. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fpga_top_yosys..
+
+7.38.30. Finished OPT passes. (There is nothing left to do.)
+
+7.39. Executing TECHMAP pass (map to technology primitives).
+
+7.39.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/ice40/latches_map.v
+Parsing Verilog input from `/usr/bin/../share/yosys/ice40/latches_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Successfully finished Verilog frontend.
+
+7.39.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+7.40. Executing ABC pass (technology mapping using ABC).
+
+7.40.1. Extracting gate netlist of module `\fpga_top_yosys' to `<abc-temp-dir>/input.blif'..
+Extracted 1134 gates and 1290 wires to a netlist network with 154 inputs and 147 outputs.
+
+7.40.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC:
+ABC: + read_blif <abc-temp-dir>/input.blif
+ABC: + read_lut <abc-temp-dir>/lutdefs.txt
+ABC: + strash
+ABC: + &get -n
+ABC: + &fraig -x
+ABC: + &put
+ABC: + scorr
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2
+ABC: + dretime
+ABC: + strash
+ABC: + dch -f
+ABC: + if
+ABC: + mfs2
+ABC: + lutpack -S 1
+ABC: + dress <abc-temp-dir>/input.blif
+ABC: Total number of equiv classes                =     374.
+ABC: Participating nodes from both networks       =     785.
+ABC: Participating nodes from the first network   =     373. (  72.71 % of nodes)
+ABC: Participating nodes from the second network  =     412. (  80.31 % of nodes)
+ABC: Node pairs (any polarity)                    =     373. (  72.71 % of names can be moved)
+ABC: Node pairs (same polarity)                   =     285. (  55.56 % of names can be moved)
+ABC: Total runtime =     0.14 sec
+ABC: + write_blif <abc-temp-dir>/output.blif
+
+7.40.1.2. Re-integrating ABC results.
+ABC RESULTS:              $lut cells:      512
+ABC RESULTS:        internal signals:      989
+ABC RESULTS:           input signals:      154
+ABC RESULTS:          output signals:      147
+Removing temp directory.
+
+7.41. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+7.42. Executing TECHMAP pass (map to technology primitives).
+
+7.42.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/usr/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$_DFFE_NP0P_'.
+Generating RTLIL representation for module `\$_DFFE_NP1P_'.
+Generating RTLIL representation for module `\$_DFFE_PP0P_'.
+Generating RTLIL representation for module `\$_DFFE_PP1P_'.
+Generating RTLIL representation for module `\$_SDFF_NP0_'.
+Generating RTLIL representation for module `\$_SDFF_NP1_'.
+Generating RTLIL representation for module `\$_SDFF_PP0_'.
+Generating RTLIL representation for module `\$_SDFF_PP1_'.
+Generating RTLIL representation for module `\$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `\$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `\$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `\$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+7.42.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~22 debug messages>
+Removed 20 unused cells and 434 unused wires.
+
+7.43. Executing OPT_LUT pass (optimize LUTs).
+Discovering LUTs.
+Number of LUTs:      549
+  1-LUT               32
+  2-LUT               80
+  3-LUT              179
+  4-LUT              257
+  with \SB_CARRY    (#0)   29
+  with \SB_CARRY    (#1)   28
+
+Eliminating LUTs.
+Number of LUTs:      545
+  1-LUT               29
+  2-LUT               80
+  3-LUT              179
+  4-LUT              257
+  with \SB_CARRY    (#0)   29
+  with \SB_CARRY    (#1)   28
+
+Combining LUTs.
+Number of LUTs:      542
+  1-LUT               29
+  2-LUT               77
+  3-LUT              177
+  4-LUT              259
+  with \SB_CARRY    (#0)   29
+  with \SB_CARRY    (#1)   28
+
+Eliminated 4 LUTs.
+Combined 3 LUTs.
+<suppressed ~2280 debug messages>
+
+7.44. Executing TECHMAP pass (map to technology primitives).
+
+7.44.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/usr/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$lut'.
+Successfully finished Verilog frontend.
+
+7.44.2. Continuing TECHMAP pass.
+Using template $paramod$fd904e9e35cfd343a9df248824bd3f1408724879\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+Using template $paramod$c1a19a87ccbbb03d43a72335db63f692ddf82cc1\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1000 for cells of type $lut.
+Using template $paramod$272652f6c6fbe9a75eff76e45cc7e2788835518b\$lut for cells of type $lut.
+Using template $paramod$6d6beead1425af15cf78b27fd9b11b41b5d4bce8\$lut for cells of type $lut.
+Using template $paramod$f54c0ffd7b041ca43eac7710ab19c0666d826c22\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0100 for cells of type $lut.
+Using template $paramod$c5f3c57a6d466a2f42208bafb8985b96ce884440\$lut for cells of type $lut.
+Using template $paramod$ad3a97108c9f4d10f8acfa309b668b9455d3d733\$lut for cells of type $lut.
+Using template $paramod$2ea69c779d6c1b79ac5a87b0d1523c67d5628dba\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10100011 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000000 for cells of type $lut.
+Using template $paramod$b431bfd938e35871dd0b7668e1503c7e8b9d491c\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00010000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001011 for cells of type $lut.
+Using template $paramod$a2d691ba21e093558f2a36669ee489fbccffbcd3\$lut for cells of type $lut.
+Using template $paramod$973818279bc95792902f3c09371fd2407d04a2a5\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01010011 for cells of type $lut.
+Using template $paramod$6e238df02989b317f10820a22773676e71120644\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0001 for cells of type $lut.
+Using template $paramod$4da6fe9957da309dc16b8f31a6b80b19c05c808d\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11100000 for cells of type $lut.
+Using template $paramod$e5e9da8fed769f971686eed8c5eea50e61f73aaa\$lut for cells of type $lut.
+Using template $paramod$920b342e429905ad61ab7cd3f67ebfaaf1217f0e\$lut for cells of type $lut.
+Using template $paramod$575b200168b9e109c2ed99df4359056f2c6696ac\$lut for cells of type $lut.
+Using template $paramod$096a408fd37568b92eea484c5cc9a8e86ab67a87\$lut for cells of type $lut.
+Using template $paramod$658b9ed803f0d3d335616d3858b53e0a2522f1e8\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000001 for cells of type $lut.
+Using template $paramod$4b2297966ddb718657b80566604f97685ffc0120\$lut for cells of type $lut.
+Using template $paramod$45d617c2ce0041e27b541f62b0fc3c3ce441a616\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00110101 for cells of type $lut.
+Using template $paramod$703a13a751e631ef123f38f7d2125aeabec0f94c\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01011100 for cells of type $lut.
+Using template $paramod$044e8b1893c94f717651c5cd428e71c892566f52\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000111 for cells of type $lut.
+Using template $paramod$179512a187da069f3b79ef6612a41e494e7d54b6\$lut for cells of type $lut.
+Using template $paramod$1bf62ab10e48d71d6497bccacf5c70420c470fe9\$lut for cells of type $lut.
+Using template $paramod$6e3b22478ca21c5590744f2e30b92938c4d90996\$lut for cells of type $lut.
+Using template $paramod$b4d0f4738a5ce50c7f36c2aa2ecc09cfb874f2b6\$lut for cells of type $lut.
+Using template $paramod$19ec49f31a8d230a567aa44ce3ea81a03c101e2b\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001101 for cells of type $lut.
+Using template $paramod$94ac66a11090dca84889e55fcf03297912a5b7ec\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0110 for cells of type $lut.
+Using template $paramod$c46e26e5a927423cd46556d9948ab62bff492185\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01101001 for cells of type $lut.
+Using template $paramod$e053a22d78e6bd5ea33183ea69976f0db741be0e\$lut for cells of type $lut.
+Using template $paramod$57f71a429a5de468266cb6ec0f5d054c9415f3b9\$lut for cells of type $lut.
+Using template $paramod$cc08dba3aac8677e797984bdf18a09dd37547dd3\$lut for cells of type $lut.
+Using template $paramod$e204a2db9f77464d0ef1bbb31ba70afbe0e38a81\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11111000 for cells of type $lut.
+Using template $paramod$418ac39d2cd7f31cb49a8d44e1b7386dec13a168\$lut for cells of type $lut.
+Using template $paramod$e49f6e3576ef1a6d2f58c54414dbb786af8cc869\$lut for cells of type $lut.
+Using template $paramod$cbfd30b70b4f0ac8dd1d3ed758215fbf49783a3b\$lut for cells of type $lut.
+Using template $paramod$bdb7f9ed72fd4f5c7ad81c376f2d8a5c72a0098d\$lut for cells of type $lut.
+Using template $paramod$b22e1de0c50840dcbbf24001663ffaaba9d5d7b8\$lut for cells of type $lut.
+Using template $paramod$2324b0e350424694c2cb686bea5ec83546d3979c\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10001111 for cells of type $lut.
+Using template $paramod$4da2782c2e024b3eded45331a6607870b9d0254f\$lut for cells of type $lut.
+Using template $paramod$d53578aacfd93124244778d88be0e90eb09c1b1b\$lut for cells of type $lut.
+Using template $paramod$595b4955041ceff09e28d600fe79275c24ba9878\$lut for cells of type $lut.
+Using template $paramod$98d40e23bb57d56e14345fb0942003de3e361f25\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10010110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01111000 for cells of type $lut.
+Using template $paramod$bba54c1ef87367812b4c15f4aed5ac70773df775\$lut for cells of type $lut.
+Using template $paramod$82b4a585d1edcb5c6e755dc9bd3392228a1c1304\$lut for cells of type $lut.
+Using template $paramod$38f9bf4dd2329347b8471f0a98443dd323386889\$lut for cells of type $lut.
+Using template $paramod$5c32c59025c0b98f20e63f249d83e7ebb4b085e3\$lut for cells of type $lut.
+Using template $paramod$1cec58bfb33a7a51c359586aade8e947536c006e\$lut for cells of type $lut.
+Using template $paramod$6b0849254d6c87461fb93e37cc18f089f61eb912\$lut for cells of type $lut.
+Using template $paramod$a3cdc1eb771a2c6a16f64da161e11100ac409d2b\$lut for cells of type $lut.
+Using template $paramod$a59507d273cd827eb6c46c37820d50a1b717efdf\$lut for cells of type $lut.
+Using template $paramod$571404c0889eaf57f492cb5e37f8acb5df5852f9\$lut for cells of type $lut.
+Using template $paramod$d4fae2c0d9ad2966369cd4e39b81c71bcd1327c9\$lut for cells of type $lut.
+Using template $paramod$6d23198eb2b8f79a41c7626605a61009695893b1\$lut for cells of type $lut.
+Using template $paramod$71d951b20e73043168c1656217d126e617052faa\$lut for cells of type $lut.
+Using template $paramod$e9c77024ca501b890c641f9c0b10e27242db8730\$lut for cells of type $lut.
+Using template $paramod$ef6f9494c41321ef63579b1462fd44bdf781fd1c\$lut for cells of type $lut.
+Using template $paramod$12879138d1e376f344e47ea40be66b776233be75\$lut for cells of type $lut.
+Using template $paramod$5ab8703b1aa62946296547e85dc0a19366704a74\$lut for cells of type $lut.
+Using template $paramod$50b99034fbf984a51c265442496081454147f31e\$lut for cells of type $lut.
+Using template $paramod$aff3a645bb9f572421a4f0f49cf8987ceb4bcdc5\$lut for cells of type $lut.
+Using template $paramod$7fcc2f13195f27c397064377984d87a90c06749d\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11111110 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1110 for cells of type $lut.
+Using template $paramod$99a2a175d178a040bb1ffceb53184fb0f59423c6\$lut for cells of type $lut.
+Using template $paramod$c24ed72ebb67e9ead6029e42e909ef7fc0abbb11\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11110100 for cells of type $lut.
+Using template $paramod$e0bde73e598487237493c8a43ca52c95a3727354\$lut for cells of type $lut.
+Using template $paramod$279a8d961e6b2ded8450bee8ed637cb9efa31f02\$lut for cells of type $lut.
+Using template $paramod$7a9d9396461df152f697894fa3b294ad1b285e08\$lut for cells of type $lut.
+Using template $paramod$d6d3aaeac1b9aa2c4b652c48e0deb565040dda72\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00101100 for cells of type $lut.
+Using template $paramod$a4df2b5be2b644499880e088a11556935f22b401\$lut for cells of type $lut.
+Using template $paramod$fc318a7df7fe07fd6e06d67fcbc358e9823ea389\$lut for cells of type $lut.
+Using template $paramod$b297295e19b03521716155b85537bbe86d6a9ae6\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10110100 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00010100 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1011 for cells of type $lut.
+No more expansions possible.
+<suppressed ~1858 debug messages>
+Removed 0 unused cells and 1234 unused wires.
+
+7.45. Executing AUTONAME pass.
+Renamed 7654 objects in module fpga_top_yosys (50 iterations).
+<suppressed ~1055 debug messages>
+
+7.46. Executing HIERARCHY pass (managing design hierarchy).
+
+7.46.1. Analyzing design hierarchy..
+Top module:  \fpga_top_yosys
+
+7.46.2. Analyzing design hierarchy..
+Top module:  \fpga_top_yosys
+Removed 0 unused modules.
+
+7.47. Printing statistics.
+
+=== fpga_top_yosys ===
+
+   Number of wires:                394
+   Number of wire bits:           2093
+   Number of public wires:         394
+   Number of public wire bits:    2093
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                716
+     SB_CARRY                       45
+     SB_DFF                         32
+     SB_DFFE                        51
+     SB_DFFESR                      35
+     SB_DFFESS                       1
+     SB_DFFSR                       10
+     SB_LUT4                       542
+
+7.48. Executing CHECK pass (checking for obvious problems).
+Checking module fpga_top_yosys...
+Found and reported 0 problems.
+
+7.49. Executing JSON backend.
+
+End of script. Logfile hash: 0a2028124a, CPU: user 8.10s system 0.19s, MEM: 60.27 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 30% 70x opt_expr (2 sec), 16% 48x opt_clean (1 sec), ...
+Warning: No PCF file specified; IO pins will be placed automatically
+
+Info: Packing constants..
+Info: Packing IOs..
+Info: Packing LUT-FFs..
+Info:      434 LCs used as LUT4 only
+Info:      108 LCs used as LUT4 and DFF
+Info: Packing non-LUT FFs..
+Info:       21 LCs used as DFF only
+Info: Packing carries..
+Info:       20 LCs used as CARRY only
+Info: Packing indirect carry+LUT pairs...
+Info:       17 LUTs merged into carry LCs
+Info: Packing RAMs..
+Info: Placing PLLs..
+Info: Packing special functions..
+Info: Packing PLLs..
+Info: Promoting globals..
+Info: promoting clk$SB_IO_IN (fanout 129)
+Info: promoting accelerator.dut.state_SB_LUT4_I3_O [reset] (fanout 17)
+Info: promoting accelerator.dot_done_SB_LUT4_I2_I1[0] [cen] (fanout 48)
+Info: promoting accelerator.dut.state_SB_LUT4_I2_1_O [cen] (fanout 17)
+Info: Constraining chains...
+Info:       10 LCs used to legalise carry chains.
+Info: Checksum: 0x71206576
+
+Info: Annotating ports with timing budgets for target frequency 12.00 MHz
+Info: Checksum: 0xa50a386c
+
+Info: Device utilisation:
+Info: 	         ICESTORM_LC:   578/ 5280    10%
+Info: 	        ICESTORM_RAM:     0/   30     0%
+Info: 	               SB_IO:     4/   96     4%
+Info: 	               SB_GB:     4/    8    50%
+Info: 	        ICESTORM_PLL:     0/    1     0%
+Info: 	         SB_WARMBOOT:     0/    1     0%
+Info: 	        ICESTORM_DSP:     0/    8     0%
+Info: 	      ICESTORM_HFOSC:     0/    1     0%
+Info: 	      ICESTORM_LFOSC:     0/    1     0%
+Info: 	              SB_I2C:     0/    2     0%
+Info: 	              SB_SPI:     0/    2     0%
+Info: 	              IO_I3C:     0/    2     0%
+Info: 	         SB_LEDDA_IP:     0/    1     0%
+Info: 	         SB_RGBA_DRV:     0/    1     0%
+Info: 	      ICESTORM_SPRAM:     0/    4     0%
+
+Info: Placed 0 cells based on constraints.
+Info: Creating initial analytic placement for 528 cells, random placement wirelen = 14310.
+Info:     at initial placer iter 0, wirelen = 88
+Info:     at initial placer iter 1, wirelen = 74
+Info:     at initial placer iter 2, wirelen = 75
+Info:     at initial placer iter 3, wirelen = 84
+Info: Running main analytical placer, max placement attempts per cell = 42924.
+Info:     at iteration #1, type ALL: wirelen solved = 75, spread = 2019, legal = 2096; time = 0.01s
+Info:     at iteration #2, type ALL: wirelen solved = 125, spread = 1845, legal = 1959; time = 0.02s
+Info:     at iteration #3, type ALL: wirelen solved = 134, spread = 1729, legal = 1819; time = 0.01s
+Info:     at iteration #4, type ALL: wirelen solved = 190, spread = 1718, legal = 1803; time = 0.01s
+Info:     at iteration #5, type ALL: wirelen solved = 256, spread = 1712, legal = 1851; time = 0.02s
+Info:     at iteration #6, type ALL: wirelen solved = 344, spread = 1803, legal = 1895; time = 0.02s
+Info:     at iteration #7, type ALL: wirelen solved = 406, spread = 1678, legal = 1806; time = 0.02s
+Info:     at iteration #8, type ALL: wirelen solved = 448, spread = 1670, legal = 1748; time = 0.01s
+Info:     at iteration #9, type ALL: wirelen solved = 511, spread = 1688, legal = 1728; time = 0.02s
+Info:     at iteration #10, type ALL: wirelen solved = 529, spread = 1860, legal = 1906; time = 0.02s
+Info:     at iteration #11, type ALL: wirelen solved = 539, spread = 1693, legal = 1755; time = 0.02s
+Info:     at iteration #12, type ALL: wirelen solved = 607, spread = 1699, legal = 1776; time = 0.01s
+Info:     at iteration #13, type ALL: wirelen solved = 634, spread = 1719, legal = 1772; time = 0.02s
+Info:     at iteration #14, type ALL: wirelen solved = 673, spread = 1752, legal = 1816; time = 0.02s
+Info: HeAP Placer Time: 0.40s
+Info:   of which solving equations: 0.23s
+Info:   of which spreading cells: 0.03s
+Info:   of which strict legalisation: 0.01s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 912, wirelen = 1728
+Info:   at iteration #5: temp = 0.000000, timing cost = 780, wirelen = 1434
+Info:   at iteration #10: temp = 0.000000, timing cost = 922, wirelen = 1366
+Info:   at iteration #15: temp = 0.000000, timing cost = 889, wirelen = 1322
+Info:   at iteration #20: temp = 0.000000, timing cost = 862, wirelen = 1282
+Info:   at iteration #24: temp = 0.000000, timing cost = 880, wirelen = 1271
+Info: SA placement time 0.83s
+
+Info: Max frequency for clock 'clk$SB_IO_IN_$glb_clk': 29.99 MHz (PASS at 12.00 MHz)
+
+Info: Max delay <async>                       -> posedge clk$SB_IO_IN_$glb_clk: 10.11 ns
+Info: Max delay posedge clk$SB_IO_IN_$glb_clk -> <async>                      : 19.67 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 2 endpoint(s)
+Info:          + represents [1,2) endpoint(s)
+Info: [ 49993,  51531) |*********************+
+Info: [ 51531,  53069) |*************+
+Info: [ 53069,  54607) |*********+
+Info: [ 54607,  56145) |************+
+Info: [ 56145,  57683) |*******+
+Info: [ 57683,  59221) |********+
+Info: [ 59221,  60759) |****+
+Info: [ 60759,  62297) |
+Info: [ 62297,  63835) |***+
+Info: [ 63835,  65373) |
+Info: [ 65373,  66911) |*+
+Info: [ 66911,  68449) |*****************+
+Info: [ 68449,  69987) |****************+
+Info: [ 69987,  71525) |*************+
+Info: [ 71525,  73063) |****+
+Info: [ 73063,  74601) |***************************+
+Info: [ 74601,  76139) |********************+
+Info: [ 76139,  77677) |*************+
+Info: [ 77677,  79215) |************************************************************
+Info: [ 79215,  80753) |***************
+Info: Checksum: 0x8dbf8f1b
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 1944 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:       1000 |       80        912 |   80   912 |      1068|       0.32       0.32|
+Info:       2000 |      365       1602 |  285   690 |       450|       0.17       0.49|
+Info:       2643 |      518       2085 |  153   483 |         0|       0.24       0.73|
+Info: Routing complete.
+Info: Router1 time 0.73s
+Info: Checksum: 0xb4059dfb
+
+Info: Critical path report for clock 'clk$SB_IO_IN_$glb_clk' (posedge -> posedge):
+Info: curr total
+Info:  1.4  1.4  Source accelerator.col_index_SB_DFFESR_Q_1_DFFLC.O
+Info:  3.0  4.3    Net accelerator.col_index[0] budget 0.000000 ns (11,3) -> (9,4)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_1_LC.I1
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:105.25-105.52
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:51.21-51.22
+Info:  0.7  5.0  Source accelerator.row_index_SB_LUT4_I2_1_LC.COUT
+Info:  0.7  5.7    Net accelerator.row_index_SB_CARRY_I1_1_CO[1] budget 0.660000 ns (9,4) -> (9,4)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_LC.I3
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:51.21-51.22
+Info:  0.9  6.6  Source accelerator.row_index_SB_LUT4_I2_LC.O
+Info:  1.8  8.3    Net accelerator.row_index_SB_LUT4_I2_O[2] budget 0.000000 ns (9,4) -> (8,3)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_3_LC.I3
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:0.0-0.0
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:31.22-31.23
+Info:  0.9  9.2  Source accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_3_LC.O
+Info:  1.8 10.9    Net accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O[2] budget 0.000000 ns (8,3) -> (8,4)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_4_LC.I2
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:0.0-0.0
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:49.21-49.23
+Info:  0.6 11.6  Source accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_4_LC.COUT
+Info:  0.0 11.6    Net accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_O_I2[3] budget 0.000000 ns (8,4) -> (8,4)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_3_LC.CIN
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:0.0-0.0
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:51.21-51.22
+Info:  0.3 11.8  Source accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_3_LC.COUT
+Info:  0.0 11.8    Net accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_O_I2[4] budget 0.000000 ns (8,4) -> (8,4)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_2_LC.CIN
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:0.0-0.0
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:51.21-51.22
+Info:  0.3 12.1  Source accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_2_LC.COUT
+Info:  0.0 12.1    Net accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_O_I2[5] budget 0.000000 ns (8,4) -> (8,4)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_1_LC.CIN
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:0.0-0.0
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:51.21-51.22
+Info:  0.3 12.4  Source accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_1_LC.COUT
+Info:  0.0 12.4    Net accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_O_I2[6] budget 0.000000 ns (8,4) -> (8,4)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_LC.CIN
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:0.0-0.0
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:51.21-51.22
+Info:  0.3 12.7  Source accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_LC.COUT
+Info:  0.0 12.7    Net accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_O_I2[7] budget 0.000000 ns (8,4) -> (8,4)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_O_SB_LUT4_O_LC.CIN
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:0.0-0.0
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:51.21-51.22
+Info:  0.3 12.9  Source accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_O_SB_LUT4_O_LC.COUT
+Info:  0.7 13.6    Net $nextpnr_ICESTORM_LC_9$I3 budget 0.660000 ns (8,4) -> (8,4)
+Info:                Sink $nextpnr_ICESTORM_LC_9.I3
+Info:  0.9 14.5  Source $nextpnr_ICESTORM_LC_9.O
+Info:  1.8 16.2    Net accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_O_I2[10] budget 11.649000 ns (8,4) -> (8,5)
+Info:                Sink accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_O_SB_LUT4_O_1_LC.I3
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:0.0-0.0
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:51.21-51.22
+Info:  0.9 17.1  Source accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_O_SB_LUT4_O_1_LC.O
+Info:  3.5 20.6    Net accelerator.row_index_SB_LUT4_I2_O_SB_LUT4_I3_O_SB_LUT4_I2_O[10] budget 14.988000 ns (8,5) -> (2,3)
+Info:                Sink accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_O_LC.I3
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:63.7-73.6
+Info:                  synthesis/matrix_layer_yosys.sv:0.0-0.0
+Info:                  /usr/bin/../share/yosys/ice40/arith_map.v:33.26-33.27
+Info:  0.9 21.5  Source accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_O_LC.O
+Info:  3.1 24.5    Net accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0[2] budget 9.992000 ns (2,3) -> (3,7)
+Info:                Sink accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_I3_LC.I3
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  0.9 25.4  Source accelerator.output_data_SB_DFFE_Q_7_D_SB_LUT4_O_I0_SB_LUT4_O_I0_SB_LUT4_I3_LC.O
+Info:  1.8 27.2    Net accelerator.output_data_SB_DFFE_Q_21_D_SB_LUT4_O_I0_SB_LUT4_O_I3[0] budget 9.992000 ns (3,7) -> (4,7)
+Info:                Sink accelerator.output_data_SB_DFFE_Q_40_D_SB_LUT4_O_I1_SB_LUT4_O_I0_SB_LUT4_O_1_I1_SB_LUT4_I2_1_O_SB_LUT4_I0_O_SB_LUT4_O_I2_SB_LUT4_O_LC.I0
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  1.3 28.5  Source accelerator.output_data_SB_DFFE_Q_40_D_SB_LUT4_O_I1_SB_LUT4_O_I0_SB_LUT4_O_1_I1_SB_LUT4_I2_1_O_SB_LUT4_I0_O_SB_LUT4_O_I2_SB_LUT4_O_LC.O
+Info:  1.8 30.2    Net accelerator.output_data_SB_DFFE_Q_40_D_SB_LUT4_O_I1_SB_LUT4_O_I0_SB_LUT4_O_1_I1_SB_LUT4_I2_1_O_SB_LUT4_I0_O_SB_LUT4_O_I2[0] budget 9.992000 ns (4,7) -> (4,7)
+Info:                Sink accelerator.output_data_SB_DFFE_Q_40_D_SB_LUT4_O_I1_SB_LUT4_O_I0_SB_LUT4_O_1_I1_SB_LUT4_I2_1_O_SB_LUT4_I0_O_SB_LUT4_O_LC.I2
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  1.2 31.4  Source accelerator.output_data_SB_DFFE_Q_40_D_SB_LUT4_O_I1_SB_LUT4_O_I0_SB_LUT4_O_1_I1_SB_LUT4_I2_1_O_SB_LUT4_I0_O_SB_LUT4_O_LC.O
+Info:  1.8 33.2    Net accelerator.output_data_SB_DFFE_Q_29_D_SB_LUT4_O_I2[0] budget 9.992000 ns (4,7) -> (4,7)
+Info:                Sink accelerator.output_data_SB_DFFE_Q_28_D_SB_LUT4_O_LC.I0
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  1.2 34.4  Setup accelerator.output_data_SB_DFFE_Q_28_D_SB_LUT4_O_LC.I0
+Info: 13.0 ns logic, 21.4 ns routing
+
+Info: Critical path report for cross-domain path '<async>' -> 'posedge clk$SB_IO_IN_$glb_clk':
+Info: curr total
+Info:  0.0  0.0  Source rst$sb_io.D_IN_0
+Info:  4.7  4.7    Net rst$SB_IO_IN budget 27.162001 ns (13,0) -> (3,8)
+Info:                Sink uart.start_SB_LUT4_I2_1_LC.I3
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  0.9  5.6  Source uart.start_SB_LUT4_I2_1_LC.O
+Info:  1.8  7.3    Net uart.start_SB_LUT4_I2_1_O[3] budget 27.162001 ns (3,8) -> (2,8)
+Info:                Sink uart.bit_index_SB_DFFESR_Q_E_SB_LUT4_O_LC.I3
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  0.9  8.2  Source uart.bit_index_SB_DFFESR_Q_E_SB_LUT4_O_LC.O
+Info:  3.7 11.9    Net uart.bit_index_SB_DFFESR_Q_E budget 19.511000 ns (2,8) -> (1,7)
+Info:                Sink uart.bit_index_SB_DFFESR_Q_D_SB_LUT4_O_LC.CEN
+Info:  0.1 12.0  Setup uart.bit_index_SB_DFFESR_Q_D_SB_LUT4_O_LC.CEN
+Info: 1.8 ns logic, 10.2 ns routing
+
+Info: Critical path report for cross-domain path 'posedge clk$SB_IO_IN_$glb_clk' -> '<async>':
+Info: curr total
+Info:  1.4  1.4  Source uart.data_SB_LUT4_O_6_LC.O
+Info:  1.8  3.2    Net uart.data_reg[1] budget 15.475000 ns (2,6) -> (2,6)
+Info:                Sink tx_SB_LUT4_O_I2_SB_LUT4_O_I0_SB_LUT4_O_I3_SB_LUT4_O_LC.I0
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:78.7-85.6
+Info:                  rtl/uart_tx.sv:15.29-15.37
+Info:  1.3  4.4  Source tx_SB_LUT4_O_I2_SB_LUT4_O_I0_SB_LUT4_O_I3_SB_LUT4_O_LC.O
+Info:  1.8  6.2    Net tx_SB_LUT4_O_I2_SB_LUT4_O_I0_SB_LUT4_O_I3[3] budget 15.475000 ns (2,6) -> (1,6)
+Info:                Sink tx_SB_LUT4_O_I2_SB_LUT4_O_I0_SB_LUT4_O_LC.I3
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  0.9  7.1  Source tx_SB_LUT4_O_I2_SB_LUT4_O_I0_SB_LUT4_O_LC.O
+Info:  1.8  8.8    Net tx_SB_LUT4_O_I2_SB_LUT4_O_I0[2] budget 15.475000 ns (1,6) -> (1,6)
+Info:                Sink tx_SB_LUT4_O_I2_SB_LUT4_O_LC.I2
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  1.2 10.0  Source tx_SB_LUT4_O_I2_SB_LUT4_O_LC.O
+Info:  3.0 13.0    Net tx_SB_LUT4_O_I2[1] budget 15.475000 ns (1,6) -> (2,8)
+Info:                Sink tx_SB_LUT4_O_LC.I2
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  1.2 14.2  Source tx_SB_LUT4_O_LC.O
+Info:  5.5 19.6    Net tx$SB_IO_OUT budget 15.475000 ns (2,8) -> (4,31)
+Info:                Sink tx$sb_io.D_OUT_0
+Info:                Defined in:
+Info:                  synthesis/fpga_top_yosys.sv:78.7-85.6
+Info:                  rtl/uart_tx.sv:9.18-9.20
+Info: 6.0 ns logic, 13.7 ns routing
+
+Info: Max frequency for clock 'clk$SB_IO_IN_$glb_clk': 29.05 MHz (PASS at 12.00 MHz)
+
+Info: Max delay <async>                       -> posedge clk$SB_IO_IN_$glb_clk: 12.04 ns
+Info: Max delay posedge clk$SB_IO_IN_$glb_clk -> <async>                      : 19.65 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 2 endpoint(s)
+Info:          + represents [1,2) endpoint(s)
+Info: [ 48908,  50501) |*******************************+
+Info: [ 50501,  52094) |******+
+Info: [ 52094,  53687) |**********+
+Info: [ 53687,  55280) |**************+
+Info: [ 55280,  56873) |****+
+Info: [ 56873,  58466) |********+
+Info: [ 58466,  60059) |****+
+Info: [ 60059,  61652) |
+Info: [ 61652,  63245) |**+
+Info: [ 63245,  64838) |+
+Info: [ 64838,  66431) |
+Info: [ 66431,  68024) |***+
+Info: [ 68024,  69617) |***+
+Info: [ 69617,  71210) |******+
+Info: [ 71210,  72803) |**********+
+Info: [ 72803,  74396) |***************************************+
+Info: [ 74396,  75989) |********************************+
+Info: [ 75989,  77582) |***********************+
+Info: [ 77582,  79175) |************************************************************
+Info: [ 79175,  80768) |*******************+
+1 warning, 0 errors
+
+Info: Program finished normally.

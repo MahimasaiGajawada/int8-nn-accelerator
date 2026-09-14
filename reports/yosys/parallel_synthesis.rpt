@@ -1,0 +1,945 @@
+
+-- Running command `read_verilog -sv synthesis/parallel_matrix_layer_yosys.sv; hierarchy -top parallel_matrix_layer_yosys; proc; opt; memory; opt; techmap; opt; stat' --
+
+1. Executing Verilog-2005 frontend: synthesis/parallel_matrix_layer_yosys.sv
+Parsing SystemVerilog input from `synthesis/parallel_matrix_layer_yosys.sv' to AST representation.
+Generating RTLIL representation for module `\parallel_matrix_layer_yosys'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \parallel_matrix_layer_yosys
+
+2.2. Analyzing design hierarchy..
+Top module:  \parallel_matrix_layer_yosys
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 9 switch rules as full_case in process $proc$synthesis/parallel_matrix_layer_yosys.sv:0$159 in module parallel_matrix_layer_yosys.
+Marked 8 switch rules as full_case in process $proc$synthesis/parallel_matrix_layer_yosys.sv:114$30 in module parallel_matrix_layer_yosys.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 38 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~22 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+     1/29: $1\dot_start[1:0] [1]
+     2/29: $4\next_state[2:0]
+     3/29: $1\dot_start[1:0] [0]
+     4/29: $3\all_done[0:0]
+     5/29: $2\all_done[0:0]
+     6/29: $5\next_state[2:0]
+     7/29: $3\next_state[2:0]
+     8/29: $1\next_state[2:0]
+     9/29: $1$fordecl_block$15.d[31:0]$225
+    10/29: $1$fordecl_block$13.e[31:0]$224
+    11/29: $1\all_done[0:0]
+    12/29: $2\next_state[2:0]
+    13/29: $1\done[0:0]
+    14/29: $2\bias_result[35:18]
+    15/29: $1$fordecl_block$6.$for_loop$7[1].$unnamed_block$12.$fordecl_block$8.k[31:0]$197
+    16/29: $2\dot_weight[31:16] [15:8]
+    17/29: $2\dot_input[31:16] [15:8]
+    18/29: $2\dot_weight[31:16] [7:0]
+    19/29: $2\dot_input[31:16] [7:0]
+    20/29: $2\engine_valid[1:1]
+    21/29: $1$fordecl_block$6.$for_loop$7[1].$unnamed_block$12.$fordecl_block$10.k[31:0]$198
+    22/29: $1\bias_result[17:0]
+    23/29: $1$fordecl_block$6.$for_loop$7[0].$unnamed_block$12.$fordecl_block$8.k[31:0]$171
+    24/29: $1\dot_weight[15:0] [15:8]
+    25/29: $1\dot_input[15:0] [15:8]
+    26/29: $1\dot_weight[15:0] [7:0]
+    27/29: $1\dot_input[15:0] [7:0]
+    28/29: $1\engine_valid[0:0]
+    29/29: $1$fordecl_block$6.$for_loop$7[0].$unnamed_block$12.$fordecl_block$10.k[31:0]$172
+Creating decoders for process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+     1/51: $5$lookahead\output_data$29[71:0]$124
+     2/51: $3$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:160$24[71:0]$119
+     3/51: $3$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:160$23[71:0]$118
+     4/51: $3$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:160$25[31:0]$120
+     5/51: $3$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:169$28[31:0]$123
+     6/51: $3$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:169$27[71:0]$122
+     7/51: $3$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:169$26[71:0]$121
+     8/51: $4$lookahead\output_data$29[71:0]$116
+     9/51: $2$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:169$28[31:0]$115
+    10/51: $2$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:169$27[71:0]$114
+    11/51: $2$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:169$26[71:0]$113
+    12/51: $2$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:160$25[31:0]$112
+    13/51: $2$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:160$24[71:0]$111
+    14/51: $2$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:160$23[71:0]$110
+    15/51: $3$lookahead\output_data$29[71:0]$80
+    16/51: $3$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:160$18[71:0]$75
+    17/51: $3$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:160$17[71:0]$74
+    18/51: $3$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:160$19[31:0]$76
+    19/51: $3$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:169$22[31:0]$79
+    20/51: $3$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:169$21[71:0]$78
+    21/51: $3$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:169$20[71:0]$77
+    22/51: $2$lookahead\output_data$29[71:0]$72
+    23/51: $2$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:169$22[31:0]$71
+    24/51: $2$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:169$21[71:0]$70
+    25/51: $2$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:169$20[71:0]$69
+    26/51: $2$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:160$19[31:0]$68
+    27/51: $2$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:160$18[71:0]$67
+    28/51: $2$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:160$17[71:0]$66
+    29/51: $1$fordecl_block$4.e[31:0]$52
+    30/51: $1$lookahead\output_data$29[71:0]$65
+    31/51: $1$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:169$28[31:0]$64
+    32/51: $1$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:169$27[71:0]$63
+    33/51: $1$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:169$26[71:0]$62
+    34/51: $1$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:160$25[31:0]$61
+    35/51: $1$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:160$24[71:0]$60
+    36/51: $1$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:160$23[71:0]$59
+    37/51: $1$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:169$22[31:0]$58
+    38/51: $1$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:169$21[71:0]$57
+    39/51: $1$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:169$20[71:0]$56
+    40/51: $1$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:160$19[31:0]$55
+    41/51: $1$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:160$18[71:0]$54
+    42/51: $1$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:160$17[71:0]$53
+    43/51: $0\engine_done[1:0] [1]
+    44/51: $0\engine_done[1:0] [0]
+    45/51: $0\state[2:0]
+    46/51: $1$fordecl_block$2.e[31:0]$49
+    47/51: $0\col_index[0:0]
+    48/51: $0\row_index[0:0]
+    49/51: $0\bias_reg[33:0]
+    50/51: $0\weight_reg[31:0]
+    51/51: $0\input_data_reg[31:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\parallel_matrix_layer_yosys.\busy' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.\done' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.\dot_input' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.\dot_weight' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.\bias_result' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.\dot_start' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.\engine_valid' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.\all_done' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.\next_state' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.$fordecl_block$6.e' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.$fordecl_block$6.$for_loop$7[0].$unnamed_block$12.current_col' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.$fordecl_block$6.$for_loop$7[0].$unnamed_block$12.$fordecl_block$8.k' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.$fordecl_block$6.$for_loop$7[0].$unnamed_block$12.$fordecl_block$10.k' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.$fordecl_block$6.$for_loop$7[1].$unnamed_block$12.current_col' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.$fordecl_block$6.$for_loop$7[1].$unnamed_block$12.$fordecl_block$8.k' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.$fordecl_block$6.$for_loop$7[1].$unnamed_block$12.$fordecl_block$10.k' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.$fordecl_block$13.e' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+No latch inferred for signal `\parallel_matrix_layer_yosys.$fordecl_block$15.d' from process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\parallel_matrix_layer_yosys.\output_data' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$678' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.\input_data_reg' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$679' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.\weight_reg' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$680' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.\bias_reg' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$681' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.\row_index' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$682' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.\col_index' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$683' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.\engine_done' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$684' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.\state' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$685' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$fordecl_block$2.e' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$686' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$fordecl_block$4.e' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$687' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:160$17' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$688' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:160$18' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$689' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:160$19' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$690' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:169$20' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$691' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:169$21' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$692' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:169$22' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$693' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:160$23' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$694' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:160$24' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$695' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:160$25' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$696' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$mask$synthesis/parallel_matrix_layer_yosys.sv:169$26' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$697' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$data$synthesis/parallel_matrix_layer_yosys.sv:169$27' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$698' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$bitselwrite$sel$synthesis/parallel_matrix_layer_yosys.sv:169$28' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$699' with positive edge clock.
+Creating register for signal `\parallel_matrix_layer_yosys.$lookahead\output_data$29' using process `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+  created $dff cell `$procdff$700' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 9 empty switches in `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+Removing empty process `parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:0$159'.
+Found and cleaned up 13 empty switches in `\parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+Removing empty process `parallel_matrix_layer_yosys.$proc$synthesis/parallel_matrix_layer_yosys.sv:114$30'.
+Cleaned up 22 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+<suppressed ~9 debug messages>
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+<suppressed ~65 debug messages>
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+<suppressed ~189 debug messages>
+Removed a total of 63 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \parallel_matrix_layer_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$509.
+    dead port 2/2 on $mux $procmux$509.
+    dead port 1/2 on $mux $procmux$507.
+    dead port 2/2 on $mux $procmux$507.
+    dead port 1/2 on $mux $procmux$505.
+    dead port 2/2 on $mux $procmux$505.
+    dead port 1/2 on $mux $procmux$500.
+    dead port 2/2 on $mux $procmux$500.
+    dead port 1/2 on $mux $procmux$498.
+    dead port 2/2 on $mux $procmux$498.
+    dead port 1/2 on $mux $procmux$496.
+    dead port 2/2 on $mux $procmux$496.
+    dead port 1/2 on $mux $procmux$491.
+    dead port 2/2 on $mux $procmux$491.
+    dead port 1/2 on $mux $procmux$489.
+    dead port 2/2 on $mux $procmux$489.
+    dead port 1/2 on $mux $procmux$487.
+    dead port 2/2 on $mux $procmux$487.
+    dead port 2/2 on $mux $procmux$482.
+    dead port 2/2 on $mux $procmux$480.
+    dead port 1/2 on $mux $procmux$473.
+    dead port 2/2 on $mux $procmux$473.
+    dead port 1/2 on $mux $procmux$471.
+    dead port 2/2 on $mux $procmux$471.
+    dead port 1/2 on $mux $procmux$467.
+    dead port 2/2 on $mux $procmux$467.
+    dead port 1/2 on $mux $procmux$465.
+    dead port 2/2 on $mux $procmux$465.
+    dead port 1/2 on $mux $procmux$461.
+    dead port 2/2 on $mux $procmux$461.
+    dead port 1/2 on $mux $procmux$459.
+    dead port 2/2 on $mux $procmux$459.
+    dead port 1/2 on $mux $procmux$455.
+    dead port 2/2 on $mux $procmux$455.
+    dead port 1/2 on $mux $procmux$453.
+    dead port 2/2 on $mux $procmux$453.
+    dead port 1/2 on $mux $procmux$449.
+    dead port 2/2 on $mux $procmux$449.
+    dead port 1/2 on $mux $procmux$447.
+    dead port 2/2 on $mux $procmux$447.
+    dead port 1/2 on $mux $procmux$443.
+    dead port 2/2 on $mux $procmux$443.
+    dead port 1/2 on $mux $procmux$441.
+    dead port 2/2 on $mux $procmux$441.
+    dead port 2/2 on $mux $procmux$437.
+    dead port 1/2 on $mux $procmux$431.
+    dead port 2/2 on $mux $procmux$431.
+    dead port 1/2 on $mux $procmux$429.
+    dead port 2/2 on $mux $procmux$429.
+    dead port 1/2 on $mux $procmux$427.
+    dead port 2/2 on $mux $procmux$427.
+    dead port 1/2 on $mux $procmux$422.
+    dead port 2/2 on $mux $procmux$422.
+    dead port 1/2 on $mux $procmux$420.
+    dead port 2/2 on $mux $procmux$420.
+    dead port 1/2 on $mux $procmux$418.
+    dead port 2/2 on $mux $procmux$418.
+    dead port 1/2 on $mux $procmux$413.
+    dead port 2/2 on $mux $procmux$413.
+    dead port 1/2 on $mux $procmux$411.
+    dead port 2/2 on $mux $procmux$411.
+    dead port 1/2 on $mux $procmux$409.
+    dead port 2/2 on $mux $procmux$409.
+    dead port 1/2 on $mux $procmux$404.
+    dead port 2/2 on $mux $procmux$404.
+    dead port 1/2 on $mux $procmux$402.
+    dead port 2/2 on $mux $procmux$402.
+    dead port 1/2 on $mux $procmux$400.
+    dead port 2/2 on $mux $procmux$400.
+    dead port 1/2 on $mux $procmux$395.
+    dead port 2/2 on $mux $procmux$395.
+    dead port 1/2 on $mux $procmux$393.
+    dead port 2/2 on $mux $procmux$393.
+    dead port 1/2 on $mux $procmux$391.
+    dead port 2/2 on $mux $procmux$391.
+    dead port 1/2 on $mux $procmux$386.
+    dead port 2/2 on $mux $procmux$386.
+    dead port 1/2 on $mux $procmux$384.
+    dead port 2/2 on $mux $procmux$384.
+    dead port 1/2 on $mux $procmux$382.
+    dead port 2/2 on $mux $procmux$382.
+    dead port 2/2 on $mux $procmux$377.
+    dead port 2/2 on $mux $procmux$375.
+    dead port 1/2 on $mux $procmux$368.
+    dead port 2/2 on $mux $procmux$368.
+    dead port 1/2 on $mux $procmux$350.
+    dead port 2/2 on $mux $procmux$350.
+    dead port 1/2 on $mux $procmux$344.
+    dead port 2/2 on $mux $procmux$344.
+    dead port 1/2 on $mux $procmux$326.
+    dead port 2/2 on $mux $procmux$326.
+    dead port 2/2 on $mux $procmux$317.
+    dead port 1/2 on $mux $procmux$307.
+    dead port 2/2 on $mux $procmux$307.
+    dead port 1/2 on $mux $procmux$302.
+    dead port 2/2 on $mux $procmux$302.
+    dead port 1/2 on $mux $procmux$296.
+    dead port 2/2 on $mux $procmux$296.
+    dead port 2/2 on $mux $procmux$284.
+    dead port 2/2 on $mux $procmux$276.
+    dead port 2/2 on $mux $procmux$274.
+    dead port 2/2 on $mux $procmux$266.
+    dead port 2/2 on $mux $procmux$244.
+    dead port 1/2 on $mux $procmux$558.
+    dead port 2/2 on $mux $procmux$558.
+    dead port 1/2 on $mux $procmux$554.
+    dead port 2/2 on $mux $procmux$554.
+    dead port 1/2 on $mux $procmux$578.
+    dead port 2/2 on $mux $procmux$578.
+    dead port 1/2 on $mux $procmux$576.
+    dead port 2/2 on $mux $procmux$576.
+    dead port 1/2 on $mux $procmux$516.
+    dead port 2/2 on $mux $procmux$516.
+    dead port 1/2 on $mux $procmux$523.
+    dead port 2/2 on $mux $procmux$523.
+    dead port 1/2 on $mux $procmux$534.
+    dead port 2/2 on $mux $procmux$534.
+    dead port 1/2 on $mux $procmux$532.
+    dead port 2/2 on $mux $procmux$532.
+    dead port 1/2 on $mux $procmux$572.
+    dead port 2/2 on $mux $procmux$572.
+    dead port 1/2 on $mux $procmux$546.
+    dead port 2/2 on $mux $procmux$546.
+    dead port 1/2 on $mux $procmux$552.
+    dead port 2/2 on $mux $procmux$552.
+    dead port 1/2 on $mux $procmux$570.
+    dead port 2/2 on $mux $procmux$570.
+    dead port 1/2 on $mux $procmux$620.
+    dead port 2/2 on $mux $procmux$620.
+    dead port 1/2 on $mux $procmux$617.
+    dead port 2/2 on $mux $procmux$617.
+    dead port 1/2 on $mux $procmux$566.
+    dead port 2/2 on $mux $procmux$566.
+    dead port 1/2 on $mux $procmux$614.
+    dead port 2/2 on $mux $procmux$614.
+    dead port 1/2 on $mux $procmux$611.
+    dead port 2/2 on $mux $procmux$611.
+    dead port 1/2 on $mux $procmux$608.
+    dead port 2/2 on $mux $procmux$608.
+    dead port 1/2 on $mux $procmux$514.
+    dead port 2/2 on $mux $procmux$514.
+    dead port 1/2 on $mux $procmux$518.
+    dead port 2/2 on $mux $procmux$518.
+    dead port 1/2 on $mux $procmux$527.
+    dead port 2/2 on $mux $procmux$527.
+    dead port 1/2 on $mux $procmux$536.
+    dead port 2/2 on $mux $procmux$536.
+    dead port 1/2 on $mux $procmux$525.
+    dead port 2/2 on $mux $procmux$525.
+    dead port 1/2 on $mux $procmux$564.
+    dead port 2/2 on $mux $procmux$564.
+    dead port 1/2 on $mux $procmux$605.
+    dead port 2/2 on $mux $procmux$605.
+    dead port 1/2 on $mux $procmux$548.
+    dead port 2/2 on $mux $procmux$548.
+    dead port 1/2 on $mux $procmux$560.
+    dead port 2/2 on $mux $procmux$560.
+    dead port 1/2 on $mux $procmux$602.
+    dead port 2/2 on $mux $procmux$602.
+    dead port 1/2 on $mux $procmux$599.
+    dead port 2/2 on $mux $procmux$599.
+    dead port 1/2 on $mux $procmux$596.
+    dead port 2/2 on $mux $procmux$596.
+    dead port 1/2 on $mux $procmux$593.
+    dead port 2/2 on $mux $procmux$593.
+    dead port 1/2 on $mux $procmux$590.
+    dead port 2/2 on $mux $procmux$590.
+    dead port 1/2 on $mux $procmux$587.
+    dead port 2/2 on $mux $procmux$587.
+Removed 169 multiplexer ports.
+<suppressed ~31 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \parallel_matrix_layer_yosys.
+Performed a total of 0 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+Removed a total of 0 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$678 ($dff) from module parallel_matrix_layer_yosys (D = $4$lookahead\output_data$29[71:0]$116, Q = \output_data).
+Adding EN signal on $procdff$679 ($dff) from module parallel_matrix_layer_yosys (D = \input_data, Q = \input_data_reg).
+Adding EN signal on $procdff$680 ($dff) from module parallel_matrix_layer_yosys (D = \weight, Q = \weight_reg).
+Adding EN signal on $procdff$681 ($dff) from module parallel_matrix_layer_yosys (D = \bias, Q = \bias_reg).
+Adding EN signal on $procdff$687 ($dff) from module parallel_matrix_layer_yosys (D = 2, Q = $fordecl_block$4.e).
+Adding EN signal on $procdff$686 ($dff) from module parallel_matrix_layer_yosys (D = 2, Q = $fordecl_block$2.e).
+Adding SRST signal on $procdff$685 ($dff) from module parallel_matrix_layer_yosys (D = \next_state, Q = \state, rval = 3'000).
+Adding SRST signal on $procdff$684 ($dff) from module parallel_matrix_layer_yosys (D = $procmux$628_Y, Q = \engine_done [1], rval = 1'0).
+Adding SRST signal on $procdff$684 ($dff) from module parallel_matrix_layer_yosys (D = $procmux$638_Y, Q = \engine_done [0], rval = 1'0).
+Adding EN signal on $procdff$683 ($dff) from module parallel_matrix_layer_yosys (D = $procmux$657_Y, Q = \col_index).
+Setting constant 1-bit at position 0 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 1 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 2 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 3 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 4 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 5 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 6 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 7 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 8 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 9 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 10 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 11 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 12 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 13 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 14 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 15 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 16 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 17 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 18 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 19 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 20 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 21 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 22 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 23 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 24 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 25 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 26 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 27 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 28 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 29 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 30 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 31 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 32 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 33 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 34 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 35 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 36 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 37 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 38 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 39 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 40 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 41 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 42 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 43 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 44 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 45 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 46 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 47 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 48 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 49 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 50 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 51 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 52 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 53 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 54 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 55 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 56 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 57 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 58 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 59 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 60 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 61 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 62 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 63 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 64 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 65 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 66 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 67 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 68 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 69 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 70 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 71 on $procdff$698 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 1 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 14 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 15 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 16 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 17 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 18 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 19 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 20 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 21 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 22 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 23 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 24 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 25 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 26 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 27 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 28 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 29 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 30 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 31 on $auto$ff.cc:266:slice$706 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 1 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 14 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 15 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 16 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 17 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 18 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 19 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 20 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 21 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 22 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 23 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 24 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 25 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 26 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 27 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 28 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 29 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 30 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 0-bit at position 31 on $auto$ff.cc:266:slice$705 ($dffe) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 0 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 1 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 2 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 3 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 4 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 5 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 6 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 7 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 8 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 9 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 10 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 11 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 12 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 13 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 14 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 15 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 16 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 17 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 18 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 19 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 20 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 21 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 22 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 23 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 24 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 25 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 26 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 27 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 28 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 29 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 30 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+Setting constant 1-bit at position 31 on $procdff$690 ($dff) from module parallel_matrix_layer_yosys.
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \parallel_matrix_layer_yosys..
+Removed 10 unused cells and 463 unused wires.
+<suppressed ~28 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+<suppressed ~1 debug messages>
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \parallel_matrix_layer_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \parallel_matrix_layer_yosys.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+Removed a total of 0 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \parallel_matrix_layer_yosys..
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+
+4.16. Finished OPT passes. (There is nothing left to do.)
+
+5. Executing MEMORY pass.
+
+5.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+5.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+5.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+5.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+5.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+5.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \parallel_matrix_layer_yosys..
+
+5.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+5.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+5.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \parallel_matrix_layer_yosys..
+
+5.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+5.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+6. Executing OPT pass (performing simple optimizations).
+
+6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+
+6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+Removed a total of 0 cells.
+
+6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \parallel_matrix_layer_yosys..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \parallel_matrix_layer_yosys.
+Performed a total of 0 changes.
+
+6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+Removed a total of 0 cells.
+
+6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \parallel_matrix_layer_yosys..
+
+6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+
+6.9. Finished OPT passes. (There is nothing left to do.)
+
+7. Executing TECHMAP pass (map to technology primitives).
+
+7.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+7.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $logic_and.
+Running "alumacc" on wrapper $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$constmap:2a3a76ca84e6e87f3378055ee13a3866ae06170b$paramod$b6defe1885a38caa29433d011c6365392c91abf2\_90_shift_shiftx for cells of type $shift.
+Using extmapper simplemap for cells of type $or.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=31:Y_WIDTH=31:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=31:Y_WIDTH=31:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=31:Y_WIDTH=31:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$constmap:82b7f640ee98cf6b4502e371896c0f93b2e80748$paramod$74a8a8dcaf4b5dc2d9563329124564dd6e4ce944\_90_shift_shiftx for cells of type $shift.
+Running "alumacc" on wrapper $extern:wrap:$neg:A_SIGNED=1:A_WIDTH=33:Y_WIDTH=33:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$neg:A_SIGNED=1:A_WIDTH=33:Y_WIDTH=33:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$neg:A_SIGNED=1:A_WIDTH=33:Y_WIDTH=33:394426c56d1a028ba8fdd5469b163e04011def47.
+Analyzing pattern of constant bits for this cell:
+Creating constmapped module `$paramod$constmap:c2329316ca5c1872bfa9f2f4bcc4795c49e4e18a$paramod$74a8a8dcaf4b5dc2d9563329124564dd6e4ce944\_90_shift_shiftx'.
+
+7.21. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$constmap:c2329316ca5c1872bfa9f2f4bcc4795c49e4e18a$paramod$74a8a8dcaf4b5dc2d9563329124564dd6e4ce944\_90_shift_shiftx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$1104.
+    dead port 2/2 on $mux $procmux$1098.
+    dead port 2/2 on $mux $procmux$1092.
+    dead port 2/2 on $mux $procmux$1086.
+    dead port 2/2 on $mux $procmux$1080.
+    dead port 2/2 on $mux $procmux$1074.
+    dead port 2/2 on $mux $procmux$1068.
+    dead port 2/2 on $mux $procmux$1062.
+Removed 8 multiplexer ports.
+<suppressed ~667 debug messages>
+
+7.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$constmap:c2329316ca5c1872bfa9f2f4bcc4795c49e4e18a$paramod$74a8a8dcaf4b5dc2d9563329124564dd6e4ce944\_90_shift_shiftx.
+<suppressed ~26 debug messages>
+Removed 0 unused cells and 13 unused wires.
+Using template $paramod$constmap:c2329316ca5c1872bfa9f2f4bcc4795c49e4e18a$paramod$74a8a8dcaf4b5dc2d9563329124564dd6e4ce944\_90_shift_shiftx for cells of type $shift.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $and.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=1:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=1:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=1:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$constmap:4a5767b34c7e172f260d427f0e4daa3c9a3f453c$paramod$16f9a8b11e94c9a0f4f3072aeecde23b0128255b\_90_shift_shiftx for cells of type $shiftx.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$constmap:da283fa03f54264b1ac64045e6b92c72b69afff5$paramod$3c22fa67685c4ece6d7a71e8c65fa1c930a7b26e\_90_shift_shiftx for cells of type $shiftx.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$constmap:532d9cf8ec8bb1a930a7b167749fa4554596c723$paramod$a21677083453f01bca5d25327f444f158d449e6a\_90_shift_shiftx for cells of type $shiftx.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=1:A_WIDTH=18:B_SIGNED=1:B_WIDTH=18:Y_WIDTH=18:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=1:A_WIDTH=18:B_SIGNED=1:B_WIDTH=18:Y_WIDTH=18:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=1:A_WIDTH=18:B_SIGNED=1:B_WIDTH=18:Y_WIDTH=18:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$constmap:c967c226570bf11e2329475846e346a5959d0c7b$paramod$818c8d976a91614492e039946b24c7d44947f5d1\_90_shift_shiftx for cells of type $shiftx.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $logic_not.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$d31bf4d7d72e59528d18fbd4f322e9d608532043\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $dff.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using template $paramod$2653f68ddb8eab7b1907b4a20767b72a824a7a36\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper maccmap for cells of type $macc.
+  add $add$synthesis/parallel_matrix_layer_yosys.sv:161$83_Y * 31'0000000000000000000000000001001 (32x31 bits, unsigned)
+Using template $paramod$e3e2a2ae1e4d598b5e0e0be67cc1104653ecf8c1\_90_alu for cells of type $alu.
+Using template $paramod$6a42b6fefed750f8a1c58eab59479d960557103c\_90_alu for cells of type $alu.
+  add $add$synthesis/parallel_matrix_layer_yosys.sv:161$127_Y * 31'0000000000000000000000000001001 (32x31 bits, unsigned)
+  add { 31'0000000000000000000000000000000 \col_index } * 17 (32x32 bits, signed)
+Using template $paramod$fbcf46ed94b87f5a0d4aa07686f54f8c76ced033\_90_alu for cells of type $alu.
+  add $0$fordecl_block$6.$for_loop$7[1].$unnamed_block$12.current_col[31:0]$164 * 17 (32x32 bits, signed)
+Using extmapper simplemap for cells of type $reduce_or.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011111 for cells of type $fa.
+Using template $paramod$ebf89ea36a793f0f77858f212141d47c833068ad\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100001 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000010010 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000011111 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~6064 debug messages>
+
+8. Executing OPT pass (performing simple optimizations).
+
+8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+<suppressed ~44687 debug messages>
+
+8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+<suppressed ~4140 debug messages>
+Removed a total of 1380 cells.
+
+8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \parallel_matrix_layer_yosys..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \parallel_matrix_layer_yosys.
+Performed a total of 0 changes.
+
+8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+Removed a total of 0 cells.
+
+8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$3060 ($_DFFE_PP_) from module parallel_matrix_layer_yosys (D = 1'x, Q = \col_index, rval = 1'0).
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$51374 ($_SDFFCE_PP0P_) from module parallel_matrix_layer_yosys.
+
+8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \parallel_matrix_layer_yosys..
+Removed 1191 unused cells and 5202 unused wires.
+<suppressed ~1192 debug messages>
+
+8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+<suppressed ~2025 debug messages>
+
+8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \parallel_matrix_layer_yosys..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \parallel_matrix_layer_yosys.
+Performed a total of 0 changes.
+
+8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+<suppressed ~294 debug messages>
+Removed a total of 98 cells.
+
+8.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$3062 ($_SDFF_PP0_) from module parallel_matrix_layer_yosys (D = $procmux$288.Y_B [0], Q = \state [0], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$3063 ($_SDFF_PP0_) from module parallel_matrix_layer_yosys (D = $procmux$288.Y_B [1], Q = \state [1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$3064 ($_SDFF_PP0_) from module parallel_matrix_layer_yosys (D = $procmux$288.B_AND_S [2], Q = \state [2], rval = 1'0).
+
+8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \parallel_matrix_layer_yosys..
+Removed 15 unused cells and 102 unused wires.
+<suppressed ~17 debug messages>
+
+8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+
+8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \parallel_matrix_layer_yosys..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \parallel_matrix_layer_yosys.
+Performed a total of 0 changes.
+
+8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \parallel_matrix_layer_yosys..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+
+8.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \parallel_matrix_layer_yosys..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+8.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \parallel_matrix_layer_yosys.
+Performed a total of 0 changes.
+
+8.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\parallel_matrix_layer_yosys'.
+Removed a total of 0 cells.
+
+8.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \parallel_matrix_layer_yosys..
+
+8.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module parallel_matrix_layer_yosys.
+
+8.30. Finished OPT passes. (There is nothing left to do.)
+
+9. Printing statistics.
+
+=== parallel_matrix_layer_yosys ===
+
+   Number of wires:                202
+   Number of wire bits:           5161
+   Number of public wires:          23
+   Number of public wire bits:     420
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1352
+     $_AND_                        261
+     $_DFFE_PN_                     72
+     $_DFFE_PP_                     98
+     $_DFF_P_                        1
+     $_MUX_                        601
+     $_NOT_                         68
+     $_OR_                         170
+     $_SDFF_PN0_                     2
+     $_SDFF_PP0_                     3
+     $_XOR_                         74
+     dot_product_yosys               2
+
+End of script. Logfile hash: 41104d1ba5, CPU: user 5.16s system 0.27s, MEM: 152.61 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 36% 32x opt_expr (1 sec), 25% 1x techmap (1 sec), ...
