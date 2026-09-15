@@ -26,4 +26,7 @@ fpga/ice40/*.json
 .vscode/
 
 # Private project study notes
-study.mdsynthesis/*_netlist.v
+study.md
+
+# Generated synthesis netlists
+synthesis/*_netlist.v
