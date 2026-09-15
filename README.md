@@ -99,6 +99,45 @@ Verification was performed using cocotb with Verilator.
 
 The verification flow checks both functional correctness and the serialized UART output produced by the FPGA wrapper.
 
+## How to Run
+
+The project provides Makefile targets for simulation, synthesis, and FPGA implementation.
+
+### Simulation
+
+Run the sequential architecture:
+
+    make sequential
+
+Run the parallel architecture:
+
+    make parallel
+
+### Synthesis
+
+Synthesize both architectures with Yosys:
+
+    make synth
+
+Run the individual synthesis flows:
+
+    make synth-sequential
+    make synth-parallel
+
+### FPGA Demonstration
+
+Run the FPGA wrapper UART simulation:
+
+    make fpga-sim
+
+Run the iCE40 synthesis, place-and-route, and bitstream generation flow:
+
+    make fpga
+
+Clean generated simulation and build artifacts:
+
+    make clean
+
 ## Synthesis
 
 The design was synthesized using Yosys and implemented through both an open-source iCE40 flow and AMD Vivado.
@@ -152,22 +191,20 @@ An FPGA wrapper connects the neural-network accelerator to a UART transmitter. A
 
 For the example input:
 
-```text
-X = [[1, 2],
-     [3, 4]]
+    X = [[1, 2],
+         [3, 4]]
 
-W = [[1, 0, 2],
-     [0, 1, 3]]
+    W = [[1, 0, 2],
+         [0, 1, 3]]
 
-B = [0, 0, 0]
+    B = [0, 0, 0]
 
-Y = [[1, 2, 8],
-     [3, 4, 18]]
+    Y = [[1, 2, 8],
+         [3, 4, 18]]
 
 The UART wrapper transmits the output values in row-major order:
 
-```text
-1, 2, 8, 3, 4, 18
+    1, 2, 8, 3, 4, 18
 
 ## Tools
 
